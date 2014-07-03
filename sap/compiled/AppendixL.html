@@ -1,0 +1,320 @@
+<h3>Appendix L: Lighting and Appliances</h3>
+<h4>L1 lighting</h4>
+<p>The calculation of lighting use is based on the proportion of fixed low energy lighting outlets installed, and on the contribution of daylight.</p>
+
+<p>Subject, in the case of DER calculations for a new dwelling, to any requirements of building regulations that apply in the administration where the dwelling will be constructed</p>
+
+<p><b>Allowing for fixed low-energy outlets</b><br>
+In UK houses, the average annual energy consumption for lighting if no low-energy lighting is used is:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>EB = 59.73 × (TFA × N)<sup>0.4714</sup></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L1' type='text' placeholder='L1' value='0' /><div class='tag' >(L1)</div></td>
+  </tr>
+</table>
+
+<p>where TFA is the total floor area in m2 and N is the assumed number of occupants (see Table 1b).</p>
+<p>The SAP calculation takes account of fixed lighting outlets with low-energy lamps, by including a correction factor C1:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>L<sub>LE</sub></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='LLE' type='text' placeholder='LLE' value='0' /><div class='tag' >(LLE)</div></td>
+  </tr><tr>
+    <td>L</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L' type='text' placeholder='L' value='0' /><div class='tag' >(L)</div></td>
+  </tr><tr>
+    <td>C1 = 1 - 0.50 × L<sub>LE</sub> / L</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L2' type='text' placeholder='L2' value='0' /><div class='tag' >(L2)</div></td>
+  </tr>
+</table>
+
+<p> where L<sub>LE</sub> is the number of fixed low energy lighting outlets (including sockets or complete luminaires capable of taking only low-energy lamps, and also compact fluorescent lamps that fitted into ordinary lighting sockets) and L is the total number of fixed lighting outlets. The ratio L<sub>LE</sub>/L should be rounded to the nearest 0.01 in equation (L2).</p>
+
+<p>Lighting fittings in less frequented areas like cupboards, wardrobes and other storage areas should be omitted from both L and L<sub>LE</sub>.</p>
+
+<p>Note: In equation (L2), only fixed lighting outlets are included in LLE and L. Movable lamps, which plug into a mains socket, are disregarded for the calculation of C1 (but are included in the formula for EB). Equation(L2) is based on two-thirds of the lighting energy consumption being via fixed lighting points, and each fixed low energy lighting point achieving a saving of 75% over a point with a non low energy lamp (2/3 x 3/4 = 0.50).</p>
+
+<p><b>Daylighting</b><br>
+Analysis of typical house types gives the following approximate correction factor, C2, for lighting energy use depending on the ratio of glass area to floor area, glass transmittance and light access factor.</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td><sub>C2</sub> = 52.2 × G<sub>L</sub><sup>2</sup> - 9.94 × G<sub>L</sub> + 1.433</td>
+    <td>if G<sub>L</sub> ≤ 0.095</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L3' type='text' placeholder='L3' value='0' /><div class='tag' >(L3)</div></td>
+  </tr>
+  <tr>
+    <td>C<sub>2</sub> = 0.96</td>
+    <td>if G<sub>L</sub> > 0.095</td>
+    <td>(L4)</td>
+  </tr>
+  <tr>
+    <td>G<sub>L</sub> = (∑ 0.9 × Aw × gL × FF × ZL) / TFA</td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L5' type='text' placeholder='L5' value='0' /><div class='tag' >(L5)</div></td>
+  </tr>
+</table>
+
+<p>where: <br>FF is the frame factor (fraction of window that is glazed) for the actual window or from Table 6c<br>
+Aw is the area of a window, m2<br>
+TFA is the total floor area, m2<br>
+gL is the light transmittance factor from Table 6b<br>
+ZL is the light access factor from Table 6d</p>
+
+<p>
+If the frame factor (glazed fraction of the window) is not known (i.e. when using BFRC certified data) use FF = 0.7.</p>
+
+<p>The summation allows for different window and rooflight types (the light access factor is different for windows and rooflights).</p>
+
+<p>The initial value of the annual energy used for lighting in the house, EL, is then</b>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>E<sub>L</sub> = E<sub>B</sub> × C<sub>1</sub> × C<sub>2</sub> kWh/year</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L6' type='text' placeholder='L6' value='0' /><div class='tag' >(L6)</div></td>
+  </tr>
+</table>
+
+<p>The lighting energy use in kWh in month m (January = 1 to December = 12) is</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>E<sub>L,m</sub> = E<sub>L</sub> × [1 + 0.5 × cos(2π (m - 0.2) / 12)] × n<sub>m</sub> / 365</td>
+  </tr>
+</table>
+
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(L7)</td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-1' type='text' placeholder='L7-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-2' type='text' placeholder='L7-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-3' type='text' placeholder='L7-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-4' type='text' placeholder='L7-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-5' type='text' placeholder='L7-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-6' type='text' placeholder='L7-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-7' type='text' placeholder='L7-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-8' type='text' placeholder='L7-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-9' type='text' placeholder='L7-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-10' type='text' placeholder='L7-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-11' type='text' placeholder='L7-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L7-12' type='text' placeholder='L7-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>Then re-calculate the annual total as the sum of the monthly values:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>E<sub>L</sub> = ∑ E<sub>L,m</sub></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L8' type='text' placeholder='L8' value='0' /><div class='tag' >(L8)</div></td>
+  </tr>
+</table>
+
+<p>The associated internal heat gain for each month in watts is</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>G<sub>L,m</sub> = E<sub>L,m</sub> × 0.85 × 1000 /(24 × n<sub>m</sub>)</td>
+  </tr>
+</table>
+
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(L9)</td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-1' type='text' placeholder='L9-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-2' type='text' placeholder='L9-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-3' type='text' placeholder='L9-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-4' type='text' placeholder='L9-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-5' type='text' placeholder='L9-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-6' type='text' placeholder='L9-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-7' type='text' placeholder='L9-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-8' type='text' placeholder='L9-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-9' type='text' placeholder='L9-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-10' type='text' placeholder='L9-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-11' type='text' placeholder='L9-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9-12' type='text' placeholder='L9-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>where nm is the number of days in month m. The factor 0.85 is an allowance for 15% of the total lighting usage being external to the dwelling. When reduced internal heat gains are assumed for the calculation the lighting gains are based on applying equation (L2) to all lighting outlets (fixed and moveable) with 80% power saving compared to standard (GLS) lamps:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>G<sub>L,m</sub> = 0.40 × E<sub>L,m</sub> × 0.85 × 1000 /(24 × n<sub>m</sub>)</td>
+  </tr>
+</table>
+
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(L9a)</td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-1' type='text' placeholder='L9a-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-2' type='text' placeholder='L9a-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-3' type='text' placeholder='L9a-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-4' type='text' placeholder='L9a-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-5' type='text' placeholder='L9a-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-6' type='text' placeholder='L9a-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-7' type='text' placeholder='L9a-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-8' type='text' placeholder='L9a-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-9' type='text' placeholder='L9a-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-10' type='text' placeholder='L9a-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-11' type='text' placeholder='L9a-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L9a-12' type='text' placeholder='L9a-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>Equation (L8) is used for the annual energy use for lighting. Equation (L9) or (L9a) is used for the heat gain from lighting in each month in Section 5 of the calculation.</p>
+
+<h4>L2 Electrical appliances</h4>
+<p>The initial value of the annual energy use in kWh for electrical appliances is:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>EA = 207.8 × (TFA × N)0.4714</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L10' type='text' placeholder='L10' value='0' /><div class='tag' >(L10)</div></td>
+  </tr>
+</table>
+
+<p>where TFA is the total floor area in m2 and N is the assumed number of occupants (see Table 1b).</p>
+
+<p>The appliances energy use in kWh in month m (January = 1 to December = 12) is</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>EA,m = EA × [1 + 0.157 × cos(2π (m - 1.78) / 12)] × nm / 365 kWh</td>
+  </tr>
+</table>
+
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(L11)</td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-1' type='text' placeholder='L11-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-2' type='text' placeholder='L11-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-3' type='text' placeholder='L11-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-4' type='text' placeholder='L11-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-5' type='text' placeholder='L11-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-6' type='text' placeholder='L11-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-7' type='text' placeholder='L11-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-8' type='text' placeholder='L11-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-9' type='text' placeholder='L11-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-10' type='text' placeholder='L11-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-11' type='text' placeholder='L11-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L11-12' type='text' placeholder='L11-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>Then re-calculate the annual total as the sum of the monthly values:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>EA = ∑ E A.m</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L12' type='text' placeholder='L12' value='0' /><div class='tag' >(L12)</div></td>
+  </tr>
+</table>
+
+<p>The associated internal heat gain for each month in watts is</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>GA,m = EA,m × 1000 /(24 × nm)</td>
+  </tr>
+</table>
+
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(L13)</td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-1' type='text' placeholder='L13-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-2' type='text' placeholder='L13-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-3' type='text' placeholder='L13-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-4' type='text' placeholder='L13-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-5' type='text' placeholder='L13-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-6' type='text' placeholder='L13-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-7' type='text' placeholder='L13-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-8' type='text' placeholder='L13-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-9' type='text' placeholder='L13-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-10' type='text' placeholder='L13-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-11' type='text' placeholder='L13-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13-12' type='text' placeholder='L13-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>where nm is the number of days in month m. When reduced internal heat gains are assumed for the calculation the appliance gains are based on efficient cold and wet appliances and below average use of other appliances:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>GA,m = 0.67 × EA,m × 1000 /(24 × nm)</td>
+  </tr>
+</table>
+
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(L13a)</td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-1' type='text' placeholder='L13a-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-2' type='text' placeholder='L13a-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-3' type='text' placeholder='L13a-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-4' type='text' placeholder='L13a-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-5' type='text' placeholder='L13a-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-6' type='text' placeholder='L13a-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-7' type='text' placeholder='L13a-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-8' type='text' placeholder='L13a-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-9' type='text' placeholder='L13a-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-10' type='text' placeholder='L13a-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-11' type='text' placeholder='L13a-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='L13a-12' type='text' placeholder='L13a-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>The annual CO2 emissions in kg/m2/year associated with electrical appliances is</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>EA × EFelectricity / TFA</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L14' type='text' placeholder='L14' value='0' /><div class='tag' >(L14)</div></td>
+  </tr>
+</table>
+
+<p>where EFelectricity is the emission factor for electricity (Table 12).</p>
+
+<p>Equation (L13) or (L13a) is used for the heat gain from appliances in each month in Section 5 of the calculation.</p>
+
+<p>Equation (L14) is used for the annual emissions for appliances in Section 16 of the calculation (which is applicable only for calculations in relation to Level 6 of the Code for Sustainable Homes and to Stamp Duty Land Tax).</p>
+
+<h4>L3 Cooking</h4>
+<p>Internal heat gains in watts from cooking:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>GC = 35 + 7 N</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L15' type='text' placeholder='L15' value='0' /><div class='tag' >(L15)</div></td>
+  </tr>
+</table>
+
+<p>When lower internal heat gains are assumed for the calculation,</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>GC = 23 + 5 N</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L15a' type='text' placeholder='L15a' value='0' /><div class='tag' >(L15a)</div></td>
+  </tr>
+</table>
+
+<p>CO2 emissions in kg/m2/year associated with cooking:</p>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>(119 + 24 N) / TFA</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='L16' type='text' placeholder='L16' value='0' /><div class='tag' >(L16)</div></td>
+  </tr>
+</table>
+
+<p>where TFA is the total floor area in m2 and N is the assumed number of occupants (see Table 1b).</p>
+
+<p>Equation (L15) or (L15a) is used for the heat gain from cooking in Section 5 of the calculation. Equation (L16) is used for the annual emissions for cooking in Section 16 of the calculation (which is applicable only for calculations in relation to Level 6 of the Code for Sustainable Homes and to Stamp Duty Land Tax).</p>
+
+
+
+
+
+
+

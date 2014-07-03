@@ -1,0 +1,393 @@
+<h3> 2. Ventilation rate</h3>
+<p>The ventilation air change rate is the rate at which outside air enters/leaves a building.</p>
+<p>SAP requires a reasonable estimate of the air change rate in order to calculate the overall heating
+requirement. The actual ventilation rate depends on a large number of factors, many of which may not be
+known precisely (e.g. permeability of materials and inadvertent gaps and openings in the structure) and in
+most cases cannot be assessed from a site survey or from plans.</p>
+<p>The infiltration rate can be assessed either from pressurisation test or, in the absence of pressure test, using the SAP algorithm as defined by (9) to (16) of the worksheet.</p>
+</p>
+
+<p>For the purposes of the SAP a chimney is defined as a vertical duct for combustion gases of diameter
+200 mm or more (or a rectangular duct of equivalent size). Vertical ducts with diameter less than 200 mm
+should be counted as flues. The following are also counted as flues:</p>
+<ul>
+<li>a chimney for solid fuel appliances with controlled flow of the air supply;</li>
+<li>a flexible flue liner sealed into a chimney;</li>
+<li>a chimney fitted with a damper;</li>
+<li>a chimney fitted with an open-flue gas fire where the flue products outlet is sealed to the chimney;</li>
+<li>a blocked up fireplace fitted with ventilators (if ventilator area does not exceed 30 000 mm2)</li>
+</ul>
+
+<table class='table table-bordered'>
+  <tr>
+    <td></td>
+    <td>main heating</td>
+    <td></td>
+    <td>secondary heating</td>
+    <td></td>
+    <td>other</td>
+    <td></td>
+    <td>total</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>m3 per hour</td>
+  </tr>
+  <tr>
+    <td>Number of chimneys</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6aa' type='text' placeholder='6aa' value='0' /><div class='tag' >(6aa)</div></td>
+    <td>+</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6ab' type='text' placeholder='6ab' value='0' /><div class='tag' >(6ab)</div></td>
+    <td>+</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6ac' type='text' placeholder='6ac' value='0' /><div class='tag' >(6ac)</div></td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6ad' type='text' placeholder='6ad' value='0' /><div class='tag' >(6ad)</div></td>
+    <td>×</td>
+    <td>40</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6a' type='text' placeholder='6a' value='0' /><div class='tag' >(6a)</div></td>
+  </tr>
+  <tr>
+    <td>Number of open flues</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6ba' type='text' placeholder='6ba' value='0' /><div class='tag' >(6ba)</div></td>
+    <td>+</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6bb' type='text' placeholder='6bb' value='0' /><div class='tag' >(6bb)</div></td>
+    <td>+</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6bc' type='text' placeholder='6bc' value='0' /><div class='tag' >(6bc)</div></td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6bd' type='text' placeholder='6bd' value='0' /><div class='tag' >(6bd)</div></td>
+    <td>×</td>
+    <td>20</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='6b' type='text' placeholder='6b' value='0' /><div class='tag' >(6b)</div></td>
+  </tr>
+  <tr>
+    <td>Number of intermittent fans</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='7aa' type='text' placeholder='7aa' value='0' /><div class='tag' >(7aa)</div></td>
+    <td>×</td>
+    <td>10</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='7a' type='text' placeholder='7a' value='0' /><div class='tag' >(7a)</div></td>
+  </tr>
+  <tr>
+    <td>Number of passive vents</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='7ba' type='text' placeholder='7ba' value='0' /><div class='tag' >(7ba)</div></td>
+    <td>×</td>
+    <td>10</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='7b' type='text' placeholder='7b' value='0' /><div class='tag' >(7b)</div></td>
+  </tr>
+  <tr>
+    <td>Number of flueless gas fires</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='7ca' type='text' placeholder='7ca' value='0' /><div class='tag' >(7ca)</div></td>
+    <td>×</td>
+    <td>40</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='7c' type='text' placeholder='7c' value='0' /><div class='tag' >(7c)</div></td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Air changes per hour</td>
+  </tr>
+  <tr>
+    <td>Infiltration due to chimneys, flues, fans, PSVs</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='8a' type='text' placeholder='8a' value='0' /><div class='tag' >(8a)</div></td>
+    <td>÷</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='5' type='text' placeholder='5' value='0' /><div class='tag' >(5)</div></td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='8' type='text' placeholder='8' value='0' /><div class='tag' >(8)</div></td>
+  </tr>
+</table>
+<p> if a pressurisation test has been carried out or is intended, proceed to (17), otherwise continue from (9) to (16)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>Number of storeys in the dwelling (ns)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='9' type='text' placeholder='9' value='0' /><div class='tag' >(9)</div></td>
+  </tr>
+  <tr>
+    <td>Additional infiltration</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='10' type='text' placeholder='10' value='0' /><div class='tag' >(10)</div></td>
+  </tr>
+  <tr>
+    <td>Structural infiltration: 0.25 for steel or timber frame or 0.35 for masonry construction</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='11' type='text' placeholder='11' value='0' /><div class='tag' >(11)</div></td>
+  </tr>
+</table>
+<p> if both types of wall are present, use the value corresponding to the greater wall area (after deducting areas of openings); if equal use 0.35</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>If suspended wooden floor, enter 0.2 (unsealed) or 0.1 (sealed), else enter 0</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='12' type='text' placeholder='12' value='0' /><div class='tag' >(12)</div></td>
+  </tr>
+  <tr>
+    <td>If no draught lobby, enter 0.05, else enter 0</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='13' type='text' placeholder='13' value='0' /><div class='tag' >(13)</div></td>
+  </tr>
+  <tr>
+    <td>Percentage of windows and doors draught proofed</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='14' type='text' placeholder='14' value='0' /><div class='tag' >(14)</div></td>
+  </tr>
+  <tr>
+    <td>Window infiltration 0.25 - [0.2 × (14) ÷ 100] = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='15' type='text' placeholder='15' value='0' /><div class='tag' >(15)</div></td>
+  </tr>
+  <tr>
+    <td>Infiltration rate (8) + (10) + (11) + (12) + (13) + (15) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='16' type='text' placeholder='16' value='0' /><div class='tag' >(16)</div></td>
+  </tr>
+  <tr>
+    <td>Air permeability value, q50, expressed in cubic metres per hour per square metre of envelope area</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='17' type='text' placeholder='17' value='0' /><div class='tag' >(17)</div></td>
+  </tr>
+  <tr>
+    <td>If based on air permeability value, then (18) = [(17) ÷ 20]+(8), otherwise <b>(18) = (16)</b></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='18' type='text' placeholder='18' value='0' /><div class='tag' >(18)</div></td>
+  </tr>
+</table>
+<p> Air permeability value applies if a pressurisation test has been done, or a design or specified air permeability is being used</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>Number of sides on which dwelling is sheltered</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='19' type='text' placeholder='19' value='0' /><div class='tag' >(19)</div></td>
+  </tr>
+  <tr>
+    <td>Shelter factor (20) = 1 - [0.075 × (19)] = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='20' type='text' placeholder='20' value='0' /><div class='tag' >(20)</div></td>
+  </tr>
+  <tr>
+    <td>Infiltration rate incorporating shelter factor (18) × (20) </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='21' type='text' placeholder='21' value='0' /><div class='tag' >(21)</div></td>
+  </tr>
+</table>
+<h3> Infiltration rate modified for monthly wind speed:</h3>
+<p> Monthly average wind speed from Table U2</p>
+<table class='table table-bordered'>
+  <tr>
+    <td></td>
+    <td>Jan</td>
+    <td>Feb</td>
+    <td>Mar</td>
+    <td>Apr</td>
+    <td>May</td>
+    <td>Jun</td>
+    <td>Jul</td>
+    <td>Aug</td>
+    <td>Sep</td>
+    <td>Oct</td>
+    <td>Nov</td>
+    <td>Dec</td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(22)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='22-1' type='text' placeholder='22-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-2' type='text' placeholder='22-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-3' type='text' placeholder='22-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-4' type='text' placeholder='22-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-5' type='text' placeholder='22-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-6' type='text' placeholder='22-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-7' type='text' placeholder='22-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-8' type='text' placeholder='22-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-9' type='text' placeholder='22-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-10' type='text' placeholder='22-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-11' type='text' placeholder='22-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22-12' type='text' placeholder='22-12' value='0' /></td>
+  </tr>
+</table>
+<p> Wind Factor (22a)m = (22)m ÷ 4</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(22a)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-1' type='text' placeholder='22a-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-2' type='text' placeholder='22a-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-3' type='text' placeholder='22a-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-4' type='text' placeholder='22a-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-5' type='text' placeholder='22a-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-6' type='text' placeholder='22a-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-7' type='text' placeholder='22a-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-8' type='text' placeholder='22a-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-9' type='text' placeholder='22a-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-10' type='text' placeholder='22a-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-11' type='text' placeholder='22a-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22a-12' type='text' placeholder='22a-12' value='0' /></td>
+  </tr>
+</table>
+<p> Adjusted infiltration rate (allowing for shelter and wind speed) = (21) × (22a)m</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(22b)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-1' type='text' placeholder='22b-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-2' type='text' placeholder='22b-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-3' type='text' placeholder='22b-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-4' type='text' placeholder='22b-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-5' type='text' placeholder='22b-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-6' type='text' placeholder='22b-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-7' type='text' placeholder='22b-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-8' type='text' placeholder='22b-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-9' type='text' placeholder='22b-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-10' type='text' placeholder='22b-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-11' type='text' placeholder='22b-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='22b-12' type='text' placeholder='22b-12' value='0' /></td>
+  </tr>
+</table>
+<p> Calculate effective air change rate for the applicable case:</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>If mechanical ventilation: air change rate through system</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='23a' type='text' placeholder='23a' value='0' /><div class='tag' >(23a)</div></td>
+  </tr>
+  <tr>
+    <td>If exhaust air heat pump using Appendix N, (23b) = (23a) × Fmv (equation (N4)) , otherwise (23b) = (23a)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='23b' type='text' placeholder='23b' value='0' /><div class='tag' >(23b)</div></td>
+  </tr>
+  <tr>
+    <td>If balanced with heat recovery: efficiency in % allowing for in-use factor (from Table 4h) =</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='23c' type='text' placeholder='23c' value='0' /><div class='tag' >(23c)</div></td>
+  </tr>
+</table>
+<p> a) If balanced mechanical ventilation with heat recovery (MVHR) (24a)m = (22b)m + (23b) × [1 – (23c) ÷ 100]</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(24a)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-1' type='text' placeholder='24a-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-2' type='text' placeholder='24a-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-3' type='text' placeholder='24a-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-4' type='text' placeholder='24a-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-5' type='text' placeholder='24a-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-6' type='text' placeholder='24a-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-7' type='text' placeholder='24a-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-8' type='text' placeholder='24a-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-9' type='text' placeholder='24a-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-10' type='text' placeholder='24a-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-11' type='text' placeholder='24a-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24a-12' type='text' placeholder='24a-12' value='0' /></td>
+  </tr>
+</table>
+<p> b) If balanced mechanical ventilation without heat recovery (MV) (24b)m = (22b)m + (23b)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(24b)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-1' type='text' placeholder='24b-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-2' type='text' placeholder='24b-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-3' type='text' placeholder='24b-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-4' type='text' placeholder='24b-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-5' type='text' placeholder='24b-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-6' type='text' placeholder='24b-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-7' type='text' placeholder='24b-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-8' type='text' placeholder='24b-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-9' type='text' placeholder='24b-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-10' type='text' placeholder='24b-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-11' type='text' placeholder='24b-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24b-12' type='text' placeholder='24b-12' value='0' /></td>
+  </tr>
+</table>
+<p> c) If whole house extract ventilation or positive input ventilation from outside<br>if (22b)m < 0.5 × (23b), then (24c) = (23b); otherwise (24c) = (22b) m + 0.5 × (23b)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(24c)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-1' type='text' placeholder='24c-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-2' type='text' placeholder='24c-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-3' type='text' placeholder='24c-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-4' type='text' placeholder='24c-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-5' type='text' placeholder='24c-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-6' type='text' placeholder='24c-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-7' type='text' placeholder='24c-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-8' type='text' placeholder='24c-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-9' type='text' placeholder='24c-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-10' type='text' placeholder='24c-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-11' type='text' placeholder='24c-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24c-12' type='text' placeholder='24c-12' value='0' /></td>
+  </tr>
+</table>
+<p> d) If natural ventilation or whole house positive input ventilation from loft<br>if (22b)m ≥ 1, then (24d)m = (22b)m otherwise (24d)m = 0.5 + [(22b)m2 × 0.5]</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(24d)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-1' type='text' placeholder='24d-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-2' type='text' placeholder='24d-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-3' type='text' placeholder='24d-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-4' type='text' placeholder='24d-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-5' type='text' placeholder='24d-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-6' type='text' placeholder='24d-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-7' type='text' placeholder='24d-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-8' type='text' placeholder='24d-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-9' type='text' placeholder='24d-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-10' type='text' placeholder='24d-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-11' type='text' placeholder='24d-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='24d-12' type='text' placeholder='24d-12' value='0' /></td>
+  </tr>
+</table>
+
+<h4>Manually copy (24a) or (24b) or (24c) or (24d) in box (25) </h4>
+<div class="input-append">
+<select id="ventilationtype-select" style="width:500px">
+<option value=0 >a) balanced mechanical ventilation with heat recovery</option>
+<option value=1 >b) balanced mechanical ventilation without heat recovery</option>
+<option value=2 >c) whole house extract ventilation or positive input ventilation from outside</option>
+<option value=3 >d) natural ventilation or whole house positive input ventilation from loft</option>
+</select>
+<button id="ventilationtype-button" class="btn btn-info" type="button">Copy to (25)m</button>
+</div>
+
+<p> Effective air change rate - enter (24a) or (24b) or (24c) or (24d) in box (25)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(25)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='25-1' type='text' placeholder='25-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-2' type='text' placeholder='25-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-3' type='text' placeholder='25-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-4' type='text' placeholder='25-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-5' type='text' placeholder='25-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-6' type='text' placeholder='25-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-7' type='text' placeholder='25-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-8' type='text' placeholder='25-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-9' type='text' placeholder='25-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-10' type='text' placeholder='25-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-11' type='text' placeholder='25-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-12' type='text' placeholder='25-12' value='0' /></td>
+  </tr>
+</table>
+<p> <br><br>If Appendix Q applies in relation to air change rate, the effective air change rate is calculated via Appendix Q and use the following instead:</p>
+<p> Effective air change rate from Appendix Q calculation sheet:</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(25)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='25-1' type='text' placeholder='25-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-2' type='text' placeholder='25-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-3' type='text' placeholder='25-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-4' type='text' placeholder='25-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-5' type='text' placeholder='25-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-6' type='text' placeholder='25-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-7' type='text' placeholder='25-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-8' type='text' placeholder='25-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-9' type='text' placeholder='25-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-10' type='text' placeholder='25-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-11' type='text' placeholder='25-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='25-12' type='text' placeholder='25-12' value='0' /></td>
+  </tr>
+</table>

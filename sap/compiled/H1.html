@@ -1,0 +1,279 @@
+<h3> H1 Calculation of solar input for solar water heating</h3>
+
+<div class="alert alert-info">
+<div class="container">
+  <div class="span5">
+  <p><b>Example system:</b></p>
+  <p>Model: <a href="http://www.navitron.org.uk/product_detail.php?proID=116&catID=115" >Navitron 20 Tube 47mm Solar Panel SFB20-47</a></p>
+  <p>Aperture Area: 1.25 m<sup>2</sup></p>
+  <p>Zero-loss collector efficiency, η0: 0.599</p>
+  <p>a1: 2.772 W/m<sup>2</sup>K</p>
+  <p>a2: 0.009 W/m<sup>2</sup>K<sup>2</sup></p>
+  <p>Orientation: South, Inclination: 35 degrees</p>
+  <p>Solar cylinder volume: 168 L</p>
+  <p>Overshading: 0.65</p>
+  </div>
+  <div class="span5">
+    <img src="../Modules/sap/shw.png" style="width:260px;" />
+  </div>
+</div>
+</div>
+
+<table class='table table-bordered'>
+  <tr>
+    <td>Aperture area of solar collector, m2</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H1' type='text' placeholder='H1' value='0' /><div class='tag' >(H1)</div></td>
+  </tr>
+  <tr>
+    <td>If only the gross area can be established reliably, multiply it by ratio in Table H1</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Zero-loss collector efficiency, η0, from test certificate or Table H1</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H2' type='text' placeholder='H2' value='0' /><div class='tag' >(H2)</div></td>
+  </tr>
+  <tr>
+    <td>Collector linear heat loss coefficient, a1, from test certificate</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H3' type='text' placeholder='H3' value='0' /><div class='tag' >(H3)</div></td>
+  </tr>
+  <tr>
+    <td>Collector 2nd order heat loss coefficient, a2, from test certificate</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H3a' type='text' placeholder='H3a' value='0' /><div class='tag' >(H3a)</div></td>
+  </tr>
+  <tr>
+    <td>a* = 0.892 (a1 + 45 a2) or a* from Table H1</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H3b' type='text' placeholder='H3b' value='0' /><div class='tag' >(H3b)</div></td>
+  </tr>
+  <tr>
+    <td>Collector performance ratio a*/η0 (H3b) ÷ (H2) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H4' type='text' placeholder='H4' value='0' /><div class='tag' >(H4)</div></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>UK Region index</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H5a' type='text' placeholder='H5a' value='0' /><div class='tag' >(H5a)</div></td>
+  </tr>
+  <tr>
+    <td>Collector Orientation (0:North 1:NE/NW 2:East/West 3:SE/SW 4:South)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H5b' type='text' placeholder='H5b' value='0' /><div class='tag' >(H5b)</div></td>
+  </tr>
+  <tr>
+    <td>Collector Inclination (degrees i.e 35 degrees)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H5c' type='text' placeholder='H5c' value='0' /><div class='tag' >(H5c)</div></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Annual solar radiation per m2 from U3.3 in Appendix U for the orientation and tilt of the collector</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H5' type='text' placeholder='H5' value='0' /><div class='tag' >(H5)</div></td>
+  </tr>
+  <tr>
+    <td>Overshading factor from Table H2
+
+<table>
+  <tr><td>Overshading</td><td>% of sky blocked by obstacles</td><td>Overshading factor</td></tr>
+  <tr><td>Heavy</td><td>> 80%</td><td>0.5</td></tr>
+  <tr><td>Significant</td><td>60% - 80%</td><td>0.65</td></tr>
+  <tr><td>Modest</td><td>20% - 60%</td><td>0.8</td></tr>
+  <tr><td>None or very little</td><td>< 20%</td><td>1.0</td></tr>
+</table>
+
+
+</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H6' type='text' placeholder='H6' value='0' /><div class='tag' >(H6)</div></td>
+  </tr>
+  <tr>
+    <td>Solar energy available (H1) × (H2) × (H5) × (H6) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H7' type='text' placeholder='H7' value='0' /><div class='tag' >(H7)</div></td>
+  </tr>
+  </table>
+
+<h4>Utilisation</h4>
+<p>The overall performance of solar water systems depends on how the hot water system is used, e.g. daily
+draw-off patterns and the use of other water heating devices such as a boiler or an immersion. The procedure
+described here is not suitable for detailed design in a particular case. It is intended to give a representative value of
+the solar contribution to domestic water heating over a range of users</p>
+
+
+<table class='table table-bordered'>
+  <tr>
+    <td>Solar-to-load ratio (H7) ÷ ∑ (45)m = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H8' type='text' placeholder='H8' value='0' /><div class='tag' >(H8)</div></td>
+  </tr>
+  <tr>
+    <td>if a WWHRS is fitted this becomes (H7) ÷ [∑ (45)m – ∑Sm], see Appendix G</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Utilisation factor if (H8) > 0, 1 - exp[-1/(H8)], otherwise enter “0” in box (H9)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H9' type='text' placeholder='H9' value='0' /><div class='tag' >(H9)</div></td>
+  </tr>
+  <tr>
+    <td>if the cylinder is heated by a boiler and there is no cylinderstat, reduce the utilisation factor by 10%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Collector performance factor f1: if (H4) < 20 0.97 - 0.0367 × (H4) + 0.0006 × (H4)^2 = <br> else 0.693 – 0.0108 × (H4) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H10' type='text' placeholder='H10' value='0' /><div class='tag' >(H10)</div></td>
+  </tr>
+  <tr>
+    <td>Dedicated solar storage volume, Vs, litres</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H11' type='text' placeholder='H11' value='0' /><div class='tag' >(H11)</div></td>
+  </tr>
+  <tr>
+    <td>volume of pre-heat store, or dedicated solar volume of a combined cylinder</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>If combined cylinder, total volume of cylinder, litres</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H12' type='text' placeholder='H12' value='0' /><div class='tag' >(H12)</div></td>
+  </tr>
+  <tr>
+    <td>Effective solar volume, Veff</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H13' type='text' placeholder='H13' value='0' /><div class='tag' >(H13)</div></td>
+  </tr>
+  <tr>
+    <td>if separate pre-heat solar storage, (H13) = (H11)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>if combined cylinder, (H13) = (H11) + 0.3 × [(H12) – (H11)]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Daily hot water demand, Vd,average, (litres) (H14) = (43)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H14' type='text' placeholder='H14' value='0' /><div class='tag' >(H14)</div></td>
+  </tr>
+  <tr>
+    <td>Volume ratio Veff/Vd,average (H13) ÷ (H14) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H15' type='text' placeholder='H15' value='0' /><div class='tag' >(H15)</div></td>
+  </tr>
+  <tr>
+    <td>Solar storage volume factor f2 1 + 0.2 × ln(H15) =</td>
+  </tr>
+  <tr>
+    <td><br>(not greater than 1.0)</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H16' type='text' placeholder='H16' value='0' /><div class='tag' >(H16)</div></td>
+  </tr>
+  <tr>
+    <td>Annual solar input Qs (kWh) (H7) × (H9) × (H10) × (H16) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='H17' type='text' placeholder='H17' value='0' /><div class='tag' >(H17)</div></td>
+  </tr>
+  <tr>
+    <td>Note: (43) and (45) are box numbers of the main worksheet</td>
+    <td></td>
+  </tr>
+</table>
+
+<h3>Additional non SAP figures for interest</h3>
+<p>Average kWh per day supplied by Solar Hot Water in each month</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding:3px'><input style='width:32px;' class='shw-1' type='text' placeholder='shw-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-2' type='text' placeholder='shw-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-3' type='text' placeholder='shw-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-4' type='text' placeholder='shw-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-5' type='text' placeholder='shw-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-6' type='text' placeholder='shw-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-7' type='text' placeholder='shw-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-8' type='text' placeholder='shw-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-9' type='text' placeholder='shw-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-10' type='text' placeholder='shw-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-11' type='text' placeholder='shw-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shw-12' type='text' placeholder='shw-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>Temperature gain in cylinder of volume given above assuming uniform heating throughout cylinder</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-1' type='text' placeholder='shwB-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-2' type='text' placeholder='shwB-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-3' type='text' placeholder='shwB-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-4' type='text' placeholder='shwB-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-5' type='text' placeholder='shwB-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-6' type='text' placeholder='shwB-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-7' type='text' placeholder='shwB-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-8' type='text' placeholder='shwB-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-9' type='text' placeholder='shwB-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-10' type='text' placeholder='shwB-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-11' type='text' placeholder='shwB-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwB-12' type='text' placeholder='shwB-12' value='0' /></td>
+  </tr>
+</table>
+<h4>Maximum potential solar input based on full utilisation</h4>
+
+<p>Average kWh per day supplied by Solar Hot Water in each month</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-1' type='text' placeholder='shwC-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-2' type='text' placeholder='shwC-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-3' type='text' placeholder='shwC-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-4' type='text' placeholder='shwC-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-5' type='text' placeholder='shwC-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-6' type='text' placeholder='shwC-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-7' type='text' placeholder='shwC-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-8' type='text' placeholder='shwC-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-9' type='text' placeholder='shwC-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-10' type='text' placeholder='shwC-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-11' type='text' placeholder='shwC-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwC-12' type='text' placeholder='shwC-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>Temperature gain in cylinder of volume given above assuming uniform heating throughout cylinder</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-1' type='text' placeholder='shwD-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-2' type='text' placeholder='shwD-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-3' type='text' placeholder='shwD-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-4' type='text' placeholder='shwD-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-5' type='text' placeholder='shwD-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-6' type='text' placeholder='shwD-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-7' type='text' placeholder='shwD-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-8' type='text' placeholder='shwD-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-9' type='text' placeholder='shwD-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-10' type='text' placeholder='shwD-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-11' type='text' placeholder='shwD-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwD-12' type='text' placeholder='shwD-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>End of day temperature in cylinder based on starting water temperature = ambient air temperature</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-1' type='text' placeholder='shwE-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-2' type='text' placeholder='shwE-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-3' type='text' placeholder='shwE-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-4' type='text' placeholder='shwE-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-5' type='text' placeholder='shwE-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-6' type='text' placeholder='shwE-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-7' type='text' placeholder='shwE-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-8' type='text' placeholder='shwE-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-9' type='text' placeholder='shwE-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-10' type='text' placeholder='shwE-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-11' type='text' placeholder='shwE-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='shwE-12' type='text' placeholder='shwE-12' value='0' /></td>
+  </tr>
+</table>
+
+<p>On a clear day in June the Uk can recieve up to 8 kWh/m2/day <a href="http://books.google.co.uk/books?id=Z3PQ007nlBcC&lpg=SA20-PA9&ots=IIApw-8lT6&dq=maximum%20compared%20with%20average%20kwh%2Fm2%20solar%20uk&pg=SA20-PA9#v=onepage&q=maximum%20compared%20with%20average%20kwh/m2%20solar%20uk&f=false">[1]</a> <a href="http://www.sustainability.ie/solararticle.pdf">[2]</a> 8kWh/m2/day is an average of 333W/m2/day about 35-40% more energy than the average june day.</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>kWh per day supplied by panel on clearest day</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='shwMAX1' type='text' placeholder='shwMAX1' value='0' /></td>
+  </tr>
+  <tr>
+    <td>Max temperature gain</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='shwMAX2' type='text' placeholder='shwMAX2' value='0' /></td>
+  </tr>
+  <tr>
+    <td>Max end of day temperature</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='shwMAX3' type='text' placeholder='shwMAX3' value='0' /></td>
+  </tr>
+</table>

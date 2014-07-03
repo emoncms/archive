@@ -1,0 +1,166 @@
+<h3> 6. Solar gains</h3>
+<p> Solar gains are calculated using solar flux from U3 in Appendix U and associated equations to convert to the applicable orientation. Rows (74) to (82) are used 12 times, one for each month, repeating as needed if there is more than one window type,</p>
+
+<script type="text/javascript" src="<?php echo $path; ?>Modules/sap/saptable.js"></script>
+
+<style>
+
+  #solargaintbl th:nth-of-type(2) { text-align: center; }
+  #solargaintbl th:nth-of-type(3) { text-align: center; }
+  #solargaintbl th:nth-of-type(4) { text-align: center; }
+  #solargaintbl th:nth-of-type(5) { text-align: center; }
+
+  #solargaintbl td:nth-of-type(2) { text-align: center; }
+  #solargaintbl td:nth-of-type(3) { text-align: center; }
+  #solargaintbl td:nth-of-type(4) { text-align: center; }
+  #solargaintbl td:nth-of-type(5) { text-align: center; }
+
+  #solargaintbl td:nth-of-type(9) { width:30px; text-align: center; }
+  #solargaintbl td:nth-of-type(10) { width:30px; text-align: center; }
+
+  #solargaintbl input[type=text] {
+    height:20px;
+    margin-bottom:0px;
+    margin-left:-3px;
+  }
+</style>
+
+<div id="solargaintbl"></div>
+
+<script>
+
+  jQuery(function ($) {
+
+    var path = "<?php echo $path; ?>";
+    table.element = "#solargaintbl";
+
+    table.fields = {
+      'name':{'title':"<?php echo _('Name'); ?>", 'type':"text"},
+      'orientation':{'title':"<?php echo _('Orientation'); ?>", 'type':"select", 'options':['North','Northeast','East','Southeast','South','Southwest','West','Northwest']},
+      //'tag':{'title':"<?php echo _('Group'); ?>", 'type':"text"},
+      'area':{'title':"<?php echo _('Area m2'); ?>", 'type':"number", dp:2},
+      'overshading':{'title':"<?php echo _('Overshading'); ?>", 'type':"select", 'options':['Heavy > 80%','More than average > 60%-80%','Average or unknown 20%-60%','Very little < 20%']},
+      'g':{'title':"<?php echo _('g⊥ Specific data or Table 6b'); ?>", 'type':"number", dp:2},
+      'ff':{'title':"<?php echo _('FF Specific data or Table 6c'); ?>", 'type':"number", dp:2},
+
+      'edit-action':{'title':'', 'type':"edit"},
+      'delete-action':{'title':'', 'type':"delete"}
+    }
+
+    table.data = data['window'];
+    //table.groupby = 'tag';
+    //table.deletedata = false;
+    table.allowadd = true;
+
+    table.draw();
+
+    $("#solargaintbl").bind("onSave", function(e,id,fields_to_update){
+
+      table.draw();
+
+      // calculate solar gains from windows
+      var gains = calc_solar_gains_from_windows(data['window'],data['H5a']);
+      // copy over the calc results into the worksheet cells
+      for (var z=1; z<13; z++) data['83-'+z] = gains[z-1];
+
+      data = calculate(data);
+      for (z in data) if (z) $("."+z).val(data[z]);
+
+      $.ajax({                                      
+        type: "POST",
+        url: path+"sap/save.json",           
+        data: "&data="+encodeURIComponent(JSON.stringify(data)),
+        success: function(msg) {console.log(msg);} 
+      });
+    });
+
+    $("#solargaintbl").bind("onDelete", function(e,id,row){
+      console.log(row);
+      data['window'].splice(row,1);
+
+      // calculate solar gains from windows
+      var gains = calc_solar_gains_from_windows(data['window'],data['H5a']);
+      // copy over the calc results into the worksheet cells
+      for (var z=1; z<13; z++) data['83-'+z] = gains[z-1];
+
+      data = calculate(data);
+      for (z in data) if (z) $("."+z).val(data[z]);
+
+      $.ajax({                                      
+        type: "POST",
+        url: path+"sap/save.json",           
+        data: "&data="+encodeURIComponent(JSON.stringify(data)),
+        success: function(msg) {console.log(msg);} 
+      });
+    });
+
+    $("#solargaintbl").bind("onAdd", function(e){
+      
+      var aname = $(".addrow[field=name] input").val();
+      var orientation = parseInt($(".addrow[field=orientation] select").val());
+      var area = parseFloat($(".addrow[field=area] input").val());
+      var overshading = parseInt($(".addrow[field=overshading] select").val());
+      var g = parseFloat($(".addrow[field=g] input").val());
+      var ff = parseFloat($(".addrow[field=ff] input").val());
+
+      table.data.push({'name':aname, orientation:orientation, area:area, overshading:overshading, g:g, ff:ff});
+
+      table.draw();
+
+      // calculate solar gains from windows
+      var gains = calc_solar_gains_from_windows(data['window'],data['H5a']);
+      // copy over the calc results into the worksheet cells
+      for (var z=1; z<13; z++) data['83-'+z] = gains[z-1];
+
+      data = calculate(data);
+      for (z in data) if (z) $("."+z).val(data[z]);
+
+      $.ajax({                                      
+        type: "POST",
+        url: path+"sap/save.json",           
+        data: "&data="+encodeURIComponent(JSON.stringify(data)),
+        success: function(msg) {console.log(msg);} 
+      });
+      
+    });
+
+  });
+
+</script>
+
+<p> Solar gains in watts, calculated for each month (83)m = Σ(74)m ...(82)m</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(83)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='83-1' type='text' placeholder='83-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-2' type='text' placeholder='83-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-3' type='text' placeholder='83-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-4' type='text' placeholder='83-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-5' type='text' placeholder='83-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-6' type='text' placeholder='83-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-7' type='text' placeholder='83-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-8' type='text' placeholder='83-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-9' type='text' placeholder='83-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-10' type='text' placeholder='83-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-11' type='text' placeholder='83-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='83-12' type='text' placeholder='83-12' value='0' /></td>
+  </tr>
+</table>
+<p> Total gains – internal and solar (84)m = (73)m + (83)m , watts</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(84)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='84-1' type='text' placeholder='84-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-2' type='text' placeholder='84-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-3' type='text' placeholder='84-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-4' type='text' placeholder='84-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-5' type='text' placeholder='84-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-6' type='text' placeholder='84-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-7' type='text' placeholder='84-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-8' type='text' placeholder='84-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-9' type='text' placeholder='84-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-10' type='text' placeholder='84-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-11' type='text' placeholder='84-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='84-12' type='text' placeholder='84-12' value='0' /></td>
+  </tr>
+</table>

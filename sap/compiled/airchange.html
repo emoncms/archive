@@ -1,0 +1,79 @@
+<h3>Ventilation and infiltration</h3>
+
+<p>The second primary cause of heat loss is ventilation and infiltration. The movement of heated air from inside the house into its surroundings.</p>
+
+<p>The rate of air movement is typically measured in air-changes per hour. An air-change is when the full volume of air inside a house is replaced with a new volume of air. This happens suprisingly frequently.</p>
+
+<p>The heat lost is equall to the energy stored in the warm air relative to the external temperature, which can be found with another fundamental physics equation, the equation for specific heat:</p>
+
+<pre>H<sub>LOSS</sub> = c x m x (T<sub>INTERNAL</sub> - T<sub>EXTERNAL</sub>)
+
+Where:
+
+c = Specific heat of air (1006 J/kg.K)
+m = Mass of air that has moved out of the building per second
+</pre>
+
+<p><i>(HyperPhysics: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html">Specific heat</a>)</i></p>
+
+<p><b>Example:</b></p>
+<p>A house that measures 7 meters wide, 7 meters long and 6 meters high encloses a volume of: 294 m<sup>3</sup>. The house had an average air tightness for a modern house of around 1.5 air changes an hour and the internal temperature is 20C while the external temperaure is 13C.</p>
+
+<p>The first step is to work out the m: the mass of air that has moved out of the building per second. We know the volume of air that has moved and the rate at which the volume moved and so we can calculate the mass from this.</p>
+
+<pre>
+mass of one air change = volume x air density</pre>
+
+<p>There are 1.5 air changes per hour or 1.5 / 3600 air changes per second.
+The mass of air that has moved per second is therefore:</p>
+
+<pre>m = (air-change / 3600) x volume x air density</pre>
+
+<p>The division by density of air and 3600 and also the mutiplication by the specific heat of air is in many models bundled together into one constant to reduce on the calculation steps:</p>
+
+<pre>m x c = air-change x volume x (density x c / 3600)</pre>
+
+<p>Where:</p> 
+
+<pre>density x c / 3600 = 1.205 x 1005 / 3600 = <b>0.336</b></pre>
+
+<p>The heat loss from ventilation and infiltration becomes:</p>
+
+<pre>H<sub>LOSS</sub> = 0.33 x air-change x volume x (T<sub>INTERNAL</sub> - T<sub>EXTERNAL</sub>)</pre>
+
+<p>This is the form of the equation used in the SAP model in <a href="../sap/4">section 4</a>. 0.336 has been rounded down to 0.33 in accordance with the SAP value. 
+
+The density and specific heat figures above come from:
+<a href="http://www.engineeringtoolbox.com/air-properties-d_156.html">http://www.engineeringtoolbox.com/air-properties-d_156.html</a>
+</p>
+<p>Entering our example values in the simplifed equation, we get:</p>
+
+<pre>H<sub>LOSS</sub> = 0.33 x 1.5 x 294 x (20 - 13) = <b>1018.71 Watts</b></pre>
+<br>
+<h4>Working out air-changes per hour</h4>
+<p>The hard part in the quation above to work out is of course the air changes per hour of a building. The most accurate way to find it out is to perform an air tightness test of the building. This involves de-pressurising the building with specialist fans attached to the front door.</p>
+<p>The SAP model provides a method to estimate the air-change rate in the absence of a measured value. This method is detailed in full here in <a href="../sap/2" >section 2</a> and takes into account factors from number of chimneys and flues to wind speed and the degree the building is sheltered from the wind.</p>
+
+<!--
+<p>The first part consists of adding up the following assumed values for all chimneys, flues and vents:</p>
+
+<table class="table">
+  <tr><td>Chimneys</td><td>40 m3/hour</td></tr>
+  <tr><td>Open flues</td><td>20 m3/hour</td></tr>
+  <tr><td>Intermittent fan</td><td>10 m3/hour</td></tr>
+  <tr><td>Passive vents</td><td>10 m3/hour</td></tr>
+  <tr><td>Flueless gas fires</td><td>40 m3/hour</td></tr>
+</table>
+
+<p>An initial air-change rate is calculated from these by dividing by the building volume i.e:</p>
+
+<pre>1x Chimney 40 m3/hour + 2x passive vents 10 m3/hour = 60 m3/hour
+60 m3/hour / 294 m3 = 0.204 air changes per hour
+</pre>-->
+
+
+
+
+
+
+

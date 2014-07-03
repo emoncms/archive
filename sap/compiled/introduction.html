@@ -1,0 +1,229 @@
+<script type="text/javascript" src="<?php echo $path; ?>Modules/sap/compiled/dynamicsim/vectormath.js"></script>
+<script type="text/javascript" src="<?php echo $path; ?>Modules/sap/compiled/dynamicsim/house.js"></script>
+<script type="text/javascript" src="<?php echo $path; ?>Modules/sap/compiled/dynamicsim/arrow.js"></script>
+<h3>Modelling building energy performance</h3>
+<p>It is suprisingly straighforward to gain significant insight into a buildings energy performance, such as working out how much heating energy it should require to keep it at 20C for a year by doing a little math. This guide walks through how to do these calculations starting with a simple model and advancing through to a full SAP model and beyond to some very simple dynamic simulation.</p><p>The guide is currently a work in progress, if you'd like to help get in contact</p>
+
+<p>The following diagram illustrates the most common factors taken into account in building energy models:</p>
+
+<div id="bound" style="width:100%; height:550px; position:relative; ">
+  <canvas id="wall" width="869px" height="550px"></canvas>
+
+  <div style="position:absolute; top:50px; left:0px; width:200px;">
+  <p><b>External environment</b><br>
+  External temperatures, wind speed
+  </p>
+  </div>
+
+  <div style="position:absolute; top:220px; left:0px; width:200px;">
+  <p><b>Solar Gain</b><br>
+  Energy from the sun can be an important source of heat gain.
+  </p>
+  </div>
+
+  <div style="position:absolute; top:10px; left:620px; width:200px;">
+  <p><b>Ventilation & draughts</b><br>
+  Heat loss from loosing heated air to the environment either through intentional ventilation or unintentional draughts (infiltration). 
+  </p>
+  </div>
+
+  <div style="position:absolute; top:220px; left:645px; width:200px;">
+  <p><b>Conduction losses</b><br>
+  Heat loss by conduction through building elements such as walls, floor, loft, windows.
+  </p>
+  </div>
+
+  <div style="position:absolute; top:220px; left:240px; width:200px;">
+  <p><b>Internal gains</b><br>
+  Gains from body heat, lighting, appliances, cooking, hot water
+  </p>
+  </div>
+
+  <div style="position:absolute; top:350px; left:400px; width:100px;">
+  <p><b>Heating system</b></p>
+  </p>
+  </div>
+
+  <div style="position:absolute; top:440px; left:75px; width:150px;">
+  <p><b>Thermal mass</b><br>Energy stored in the mass of the building</p>
+  </p>
+  </div>
+
+  <img style="position:absolute; top:348px; left:300px; width:35px;" src="<?php echo $path; ?>Modules/sap/person.png">
+
+</div>
+
+
+
+<h3>Part 1: Heat losses</h3>
+<ul>
+  <li><a href="<?php echo $path; ?>sap/fabricheatloss">Conduction through building fabric</a>: walls, windows, loft, floor, thermal bridges. Calculated via material U-values or thermal conductivity.</li>
+  <li><a href="<?php echo $path; ?>sap/airchange">Ventilation and Infiltration</a></li>
+</ul>
+
+<h3>Part 2: Internal gains</h3>
+<ul>
+  <li>Metabolic (body heat)</li>
+  <li>Lighting</li>
+  <li>Appliances</li>
+  <li>Cooking</li>
+  <li>Hot water, including solar hot water</li>
+
+  <li>Heating system</li>
+</ul>
+
+<h3>Part 3: Solar gains</h3>
+
+<h3>Part 4: Further considerations</h3>
+<ul>
+  <li>Utilisation factors of gains</li>
+  <li>Thermal mass</li>
+
+</ul>
+
+<h3>Model types</h3>
+
+<p>For examples of the following model types see the <a href="<?php echo $path; ?>sap/modelexamples"> model examples page</a>.
+
+<p><b>Simple annual</b><br>The simplest of all models, possible to get good insight into energy performance with the least amount of calculations, but not as accurate as more detailed models.</p>
+
+<p><b>Simple monthly</b><br>A very common simple model type, used in SAP and PHPP, more accurate than the annual model and gives insight into seasonal factors throughout a year. Require's higher detail datasets.</p>
+
+<p><b>Simple daily</b><br>As above but on a daily basis</p>
+
+<p><b>Dynamic simulations</b><br>
+The simple model's use averaged annual, monthly datasets and so give outputs that are averages for a year/month. Dynamic simulations can give far greater detail and can be useful for finding out what happens in extremes of climate: hour-by-hour on a sunny day in June rather than the average for June.
+</p>
+
+
+
+<script>
+
+jQuery(function ($) {
+
+  var canvas = document.getElementById("wall");
+  var ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0,0,869,800);
+
+  draw_stove(ctx,450,400);
+  draw_house(ctx,250,480);
+
+  ctx.fillStyle = "#f69844";
+  ctx.strokeStyle = "#000";
+
+  // Solar
+  var tail = {x:75, y:330};  
+  var head = {x:tail.x+110, y:tail.y-0}; 
+  draw_arrow(ctx,tail,head,20,40,0.6);
+
+  var tail = {x:380+120, y:150};  
+  var head = {x:tail.x+82, y:tail.y-110}; 
+  draw_arrow(ctx,tail,head,20,35,0.6);
+
+  var tail = {x:495+150, y:360};  
+  var head = {x:tail.x+100, y:tail.y-0}; 
+  draw_arrow(ctx,tail,head,20,40,0.6);
+
+  var tail = {x:315, y:340};  
+  var head = {x:tail.x, y:tail.y-30}; 
+  draw_arrow(ctx,tail,head,5,10,0.6);
+
+  //var tail = {x:470, y:450};  
+  //var head = {x:tail.x, y:tail.y-30}; 
+  //draw_arrow(ctx,tail,head,5,10,0.6);
+
+  var tail = {x:460, y:423};  
+  var head = {x:tail.x-40, y:tail.y}; 
+  draw_arrow(ctx,tail,head,8,16,0.6);
+
+  var tail = {x:478, y:423};  
+  var head = {x:tail.x+40, y:tail.y}; 
+  draw_arrow(ctx,tail,head,8,16,0.6);
+
+  var tail = {x:575, y:385};  
+  var head = {x:tail.x-20, y:tail.y-30}; 
+  draw_arrow(ctx,tail,head,5,10,0.6);
+
+  ctx.fillStyle = "#f69844";
+  ctx.font = '22pt Arial';
+  //ctx.fillText("21C", 240+150,408);
+  //ctx.fillText("13C", 660+150,408);
+
+  ctx.moveTo(560, 529-70);
+  ctx.lineTo(560, 399);
+  ctx.lineTo(600, 399);
+
+  ctx.moveTo(570, 399);
+  ctx.lineTo(570, 396);
+  ctx.lineTo(590, 396);
+  ctx.lineTo(590, 399);
+
+  ctx.moveTo(597, 399);
+  ctx.lineTo(597, 350);
+  ctx.lineTo(600, 350);
+
+  ctx.moveTo(563, 529-70);
+  ctx.lineTo(563, 404);
+  ctx.lineTo(560, 402);
+
+  ctx.stroke();
+
+});
+
+function draw_stove(ctx,x,y)
+{
+
+  
+  var radius=4,width=40,height=50;
+
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+
+  ctx.stroke();
+
+  x += 3; y += 3;
+
+  var radius=4,width=33,height=38;
+
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+
+  ctx.stroke();
+
+  height = 50;
+
+  // Flue
+  ctx.moveTo(x+11, y-3);
+  ctx.lineTo(x+11, y-400);
+  ctx.moveTo(x+23, y-3);
+  ctx.lineTo(x+23, y-400);
+  ctx.lineTo(x+11, y-400);
+
+  // Feet
+  ctx.moveTo(x+3, y+height-3);
+  ctx.lineTo(x+3, y+height+7);
+  ctx.moveTo(x+31, y+height-3);
+  ctx.lineTo(x+31, y+height+7);
+  ctx.stroke();
+}
+
+</script>

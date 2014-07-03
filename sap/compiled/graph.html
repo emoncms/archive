@@ -1,0 +1,100 @@
+<script language="javascript" type="text/javascript" src="<?php echo $path;?>Lib/flot/jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo $path;?>Lib/flot/jquery.flot.stack.min.js"></script>
+<h3>Contribution of space heating, internal and solar gains</h3>
+
+<div id="graph" style="width:100%; height:400px;"></div>
+
+<script id="source" language="javascript" type="text/javascript">
+
+jQuery(function ($) {
+
+  var days = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+  var spaceheating = [];
+  for (var i=1; i<13; i++) spaceheating[i-1] = [i,data['98-'+i]];
+
+  var solargains = [];
+  for (var i=1; i<13; i++) solargains[i-1] = [i,data['83-'+i]*0.024*days[i-1]];
+
+  var internalgains = [];
+  for (var i=1; i<13; i++) internalgains[i-1] = [i,data['73-'+i]*0.024*days[i-1]];
+
+  var internaltemp = [];
+  for (var i=1; i<13; i++) internaltemp[i-1] = [i,data['92-'+i]];
+
+  var externaltemp = [];
+  for (var i=1; i<13; i++) externaltemp[i-1] = [i,data['96-'+i]];
+
+  $.plot($("#graph"), [
+
+  {
+    data: solargains, 
+    label: "Solar gains (kWh)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 0,
+    yaxis: 1
+  },
+  {
+    data: internalgains, 
+    label: "Internal gains (kWh)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 1,
+    yaxis: 1
+  },
+  {
+    data: spaceheating, 
+    label: "Space Heating (kWh)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 2,
+    yaxis: 1
+  },
+
+
+  {
+    data: internaltemp, 
+    label: "Mean internal temperature (C)",
+    lines: { 
+      show: true, 
+      fill: false
+    },
+    color: 2,
+    yaxis: 2
+  },
+  {
+    data: externaltemp, 
+    label: "External temperature (C)",
+    lines: { 
+      show: true, 
+      fill: false
+    },
+    color: 1,
+    yaxis: 2
+  }], 
+  {
+    grid: { show: true, hoverable: true, clickable: true },
+
+    yaxis: {min: 0},
+    selection: { mode: "x" }
+  });
+
+});
+
+</script>

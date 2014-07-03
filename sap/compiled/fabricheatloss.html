@@ -1,0 +1,45 @@
+<h3>Building fabric heat loss, thermal conductivity and U-values</h3>
+<p>Building fabric heat loss is heat loss through building elements such as:
+<ul>
+<li>Wall's</li>
+<li>Floor</li>
+<li>Loft/roof</li>
+<li>Doors and windows</li>
+<li>Thermal bridges</li>
+</ul>
+<p>Heat loss is calculated using the physics equation for heat conduction:</p>
+
+<pre>
+Heat Loss = k x A x (T<sub>INTERNAL</sub> - T<sub>EXTERNAL</sub>) / l
+
+k = thermal conductivity of the element material
+A = cross sectional area of the element
+l = element thickness
+
+</pre>
+
+<p><i>(HyperPhysics: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/thermo/heatra.html#c2">Heat conduction</a>)</i></p>
+
+<p><b>Example:</b></p>
+<p>Imagine a house that is 7 meters wide, 7 meters long and 6 meters high with walls, floor and roof made entirelly of 200mm of insulation with a thermal conductivity of 0.035W/mK and with no windows or doors to keep things simple. What is the heat loss if the internal temperature is kept at 20C and the external temperature is 13C?</p>
+
+<pre>The internal surface area is: 2 x 48 + 4 x 42 = 264 m2
+Heat Loss = 0.035 x 264 x (20-13) / 0.2 = <b>323.4 Watts</b>
+</pre>
+
+<h4>U-values</h4>
+<p>Most model's start with U-value's rather than thermal conductivity (k). This makes particular sense for complex assemblies that may be a composite of materials such as modern double galzed window's where thickness (l) does not really apply. But being able to derive U-values from thermal conductivity is useful for building fabric elements that can be of any specified thickness such as many forms of insulation or solid walls.</p>
+
+<p>If the thermal conductivity of a material is known its U-value can be calculated simply as:</p>
+<pre>U-value = k / l</pre>
+
+<p>Heat loss through the element can then be calculated with the heat conduction equation above simplified to:</p>
+
+<pre>Heat Loss = U-value x A x (T<sub>INTERNAL</sub> - T<sub>EXTERNAL</sub>)</pre>
+
+<p>This is the form that you will see most commonly used in models such as SAP (see <a href="../sap/3" >section 3 of the worksheet</a>)</p>
+
+
+
+
+

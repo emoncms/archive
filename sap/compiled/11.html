@@ -1,0 +1,117 @@
+<h3> 11a. SAP rating – Individual heating systems including micro-CHP</h3>
+<table class='table table-bordered'>
+  <tr>
+    <td>Energy cost deflator (Table 12):</td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='256' type='text' placeholder='256' value='0' /><div class='tag' >(256)</div></td>
+  </tr>
+  <tr>
+    <td>Energy cost factor (ECF)</td>
+    <td>[(255) × (256)] ÷ [(4) + 45.0] =</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='257' type='text' placeholder='257' value='0' /><div class='tag' >(257)</div></td>
+  </tr>
+  <tr>
+    <td>SAP rating (Section 13)</td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px; ' class='258' type='text' placeholder='258' value='0' /><div class='tag' >(258)</div></td>
+  </tr>
+</table>
+
+<canvas id="rating" width="600px" height="400px"></canvas>
+
+<script>
+    var canvas = document.getElementById("rating");
+    var ctx = canvas.getContext("2d");
+
+    var padding = 10;
+    var barheight = 35;
+    var barspacing = 5;
+    var textleft = 10;
+    var textright = 15;
+    var width = 120;
+    var widthinc = 30;
+
+    var ratings = [
+      {start:92, end:100, letter:'A', color:"#009a44"},
+      {start:81, end:91, letter:'B', color:"#2dca73"},
+      {start:69, end:80, letter:'C', color:"#b8f351"},
+      {start:55, end:68, letter:'D', color:"#f5ec00"},
+      {start:39, end:54, letter:'E', color:"#ffac4d"},
+      {start:21, end:38, letter:'F', color:"#fd8130"},
+      {start:1, end:20, letter:'G', color:"#fd001a"}
+    ];
+
+    ctx.font = "bold 20px arial";
+
+    var totalwidth = width+widthinc*6+20;
+
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 2;
+    var height = barheight*7+barspacing*6+padding*2;
+    ctx.strokeRect(1,1,totalwidth+100,height);
+
+    // Bars
+    var x = padding;
+    var y = padding;
+
+    ctx.beginPath();
+    ctx.moveTo(totalwidth,1); 
+    ctx.lineTo(totalwidth,height);
+    ctx.closePath();
+    ctx.stroke();
+
+    var value = 100;
+
+    jQuery(function ($) {
+      value = Math.round(data['258']);
+      draw_sapratingchart();
+    });
+
+    $('input').change(function()
+    {
+      value = Math.round(data['258']);
+      draw_sapratingchart();
+    });
+
+    function draw_sapratingchart()
+    {
+      width = 120;
+      x = padding;
+      y = padding;
+
+      for (z in ratings)
+      {
+        ctx.fillStyle = ratings[z].color;
+        ctx.fillRect(x,y,width,barheight);
+
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 16px arial";
+        ctx.fillText("("+ratings[z].start+"-"+ratings[z].end+")",x+textleft,y+22);
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 20px arial";
+        ctx.fillText(ratings[z].letter,width-textright,y+24);
+
+        y += barheight+barspacing;
+        width += widthinc;
+
+        if (value>=ratings[z].start && value<=ratings[z].end) {
+          height = (barheight+barspacing)*(parseInt(z))+padding;
+          ctx.fillStyle = ratings[z].color;
+
+          ctx.beginPath();
+          ctx.moveTo(totalwidth+28,height); 
+          ctx.lineTo(totalwidth+92,height);
+          ctx.lineTo(totalwidth+92,height+barheight);
+          ctx.lineTo(totalwidth+28,height+barheight);
+          ctx.lineTo(totalwidth+8,height+(barheight/2));
+          ctx.closePath();
+          ctx.fill();
+
+          ctx.fillStyle = "#fff";
+          ctx.font = "bold 20px arial";
+          ctx.fillText(value,totalwidth+40,height+24);
+        }
+      }
+    }
+
+</script>

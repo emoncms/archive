@@ -1,0 +1,846 @@
+# 1. Overall dwelling dimensions
+
+<
+|Area (m2)||Average storey height (m)||Volume (m3)
+Basement|(1a)|×|(2a)|=|(3a)
+Ground floor|(1b)|×|(2b)|=|(3b)
+First floor|(1c)|×|(2c)|=|(3c)
+Second floor|(1d)|×|(2d)|=|(3d)
+Third floor|(1e)|×|(2e)|=|(3e)
+Other floor 1|(1f)|×|(2f)|=|(3f)
+Other floor 2|(1g)|×|(2g)|=|(3g)
+Other floor 3|(1h)|×|(2h)|=|(3h)
+Total floor area TFA =|(4)||||
+Dwelling volume ||||=|(5)
+>
+
+$ (3a)=(1a)x(2a)
+$ (3b)=(1b)x(2b)
+$ (3c)=(1c)x(2c)
+$ (3d)=(1d)x(2d)
+$ (3e)=(1e)x(2e)
+$ (3f)=(1f)x(2f)
+$ (3g)=(1g)x(2g)
+$ (3h)=(1h)x(2h)
+$ (4)=(1a)+(1b)+(1c)+(1d)+(1e)+(1f)+(1g)+(1h)
+$ (5)=(3a)+(3b)+(3c)+(3d)+(3e)+(3f)+(3g)+(3h)
+
+# 2. Ventilation rate
+<
+|main heating||secondary heating||other||total||||m3 per hour
+Number of chimneys|(6aa)|+|(6ab)|+|(6ac)|=|(6ad)|×|40|=|(6a)
+Number of open flues|(6ba)|+|(6bb)|+|(6bc)|=|(6bd)|×|20|=|(6b)
+Number of intermittent fans|||||||(7aa)|×|10|=|(7a)
+Number of passive vents|||||||(7ba)|×|10|=|(7b)
+Number of flueless gas fires|||||||(7ca)|×|40|=|(7c)
+>
+
+<
+|||||Air changes per hour
+Infiltration due to chimneys, flues, fans, PSVs|(8a)|÷|(5)|=|(8)
+>
+
+$ (6ad)=(6aa)+(6ab)+(6ac)
+$ (6a)=(6ad)x(v40)
+$ (6bd)=(6ba)+(6bb)+(6bc)
+$ (6b)=(6bd)x(v20)
+$ (7a)=(7aa)x(v10)
+$ (7b)=(7ba)x(v10)
+$ (7c)=(7ca)x(v40)
+$ (8a)=(6a)+(6b)+(7a)+(7b)+(7c)
+$ (8)=(8a)÷(5)
+
+p if a pressurisation test has been carried out or is intended, proceed to (17), otherwise continue from (9) to (16)
+
+<
+Number of storeys in the dwelling (ns)|(9)
+Additional infiltration|(10)
+Structural infiltration: 0.25 for steel or timber frame or 0.35 for masonry construction|(11)
+>
+
+$ (10)=(9)-(v1)x(v0.1)
+
+p if both types of wall are present, use the value corresponding to the greater wall area (after deducting areas of openings); if equal use 0.35 
+ 
+<
+If suspended wooden floor, enter 0.2 (unsealed) or 0.1 (sealed), else enter 0|(12)
+If no draught lobby, enter 0.05, else enter 0|(13)
+Percentage of windows and doors draught proofed|(14)
+Window infiltration 0.25 - [0.2 × (14) ÷ 100] = |(15)
+Infiltration rate (8) + (10) + (11) + (12) + (13) + (15) = |(16)
+Air permeability value, q50, expressed in cubic metres per hour per square metre of envelope area|(17)
+If based on air permeability value, then (18) = [(17) ÷ 20]+(8), otherwise <b>(18) = (16)</b>|(18)
+>
+
+$ (15)=(v-0.2)x(14)÷(v100)+(v0.25)
+$ (16)=(8)+(10)+(11)+(12)+(13)+(15) 
+$ (18)=(16)x(v1)
+
+p Air permeability value applies if a pressurisation test has been done, or a design or specified air permeability is being used
+
+<
+Number of sides on which dwelling is sheltered|(19)
+Shelter factor (20) = 1 - [0.075 × (19)] = |(20)
+Infiltration rate incorporating shelter factor (18) × (20) |(21)
+>
+
+$ (20)=(v-0.075)x(19)+(v1)
+$ (21)=(18)x(20)
+
+# Infiltration rate modified for monthly wind speed:
+p Monthly average wind speed from Table U2
+
+t 1
+
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+m (22)
+
+p Wind Factor (22a)m = (22)m ÷ 4
+
+m (22a)
+$ (m22a)=(m22)÷(v4)
+
+p Adjusted infiltration rate (allowing for shelter and wind speed) = (21) × (22a)m
+
+m (22b)
+$ (m22b)=(m22a)x(21)
+
+t 0
+
+p Calculate effective air change rate for the applicable case:
+
+<
+If mechanical ventilation: air change rate through system|(23a)
+If exhaust air heat pump using Appendix N, (23b) = (23a) × Fmv (equation (N4)) , otherwise (23b) = (23a)|(23b)
+If balanced with heat recovery: efficiency in % allowing for in-use factor (from Table 4h) =|(23c)
+>
+
+p a) If balanced mechanical ventilation with heat recovery (MVHR) (24a)m = (22b)m + (23b) × [1 – (23c) ÷ 100]
+22
+
+t 1
+m (24a)
+$ (m24a)=(23c)÷(v-100)+(v1)x(23b)+(m22b)
+
+p b) If balanced mechanical ventilation without heat recovery (MV) (24b)m = (22b)m + (23b)
+
+m (24b)
+$ (m24b)=(m22b)+(23b)
+
+p c) If whole house extract ventilation or positive input ventilation from outside<br>if (22b)m < 0.5 × (23b), then (24c) = (23b); otherwise (24c) = (22b) m + 0.5 × (23b)
+
+m (24c)
+
+p d) If natural ventilation or whole house positive input ventilation from loft<br>if (22b)m ≥ 1, then (24d)m = (22b)m otherwise (24d)m = 0.5 + [(22b)m2 × 0.5]
+
+m (24d)
+
+p Effective air change rate - enter (24a) or (24b) or (24c) or (24d) in box (25)
+
+m (25)
+
+p <br><br>If Appendix Q applies in relation to air change rate, the effective air change rate is calculated via Appendix Q and use the following instead:
+
+p Effective air change rate from Appendix Q calculation sheet:
+
+m (25)
+
+# 3. Heat losses and heat loss parameter
+p Items in the table below are to be expanded as necessary to allow for all different types of element e.g. 4 wall types.
+
+p The κ-value is the heat capacity per unit area, see Table 1e
+
+t 1
+<
+Element|Gross<br>area, m2||Openings<br>m2||Net area<br>A, m2||U-value<br>W/m2K|=|A×U<br>W/K|κ-value<br>kJ/m2·K|A×κ<br>kJ/K
+Door|||||(26-1)|×|(26-2)|=|(26)||
+Window|||||(27-1)|×|(27-2)|=|(27)||
+Roof window|||||(27a-1)|×|(27a-2)|=|(27a)||
+Basement floor|||||(28-1)|×|(28-2)|=|(28)|(28-3)|(28-4)
+Ground floor|||||(28a-1)|×|(28a-2)|=|(28a)|(28a-3)|(28a-4)
+Exposed floor|||||(28b-1)|×|(28b-2)|=|(28b)|(28b-3)|(28b-4)
+Basement wall|(29-1)|-|(29-2)|=|(29-3)|×|(29-4)|=|(29)|(29-5)|(29-6)
+External wall|(29a-1)|-|(29a-2)|=|(29a-3)|×|(29a-4)|=|(29a)|(29a-5)|(29a-6)
+Roof|(30-1)|-|(30-2)|=|(30-3)|×|(30-4)|=|(30)|(30-5)|(30-6)
+>
+
+$ (26)=(26-1)x(26-2)
+$ (27)=(27-1)x(27-2)
+$ (27a)=(27a-1)x(27a-2)
+$ (28)=(28-1)x(28-2)
+$ (28a)=(28a-1)x(28a-2)
+$ (28b)=(28b-1)x(28b-2)
+
+$ (29-3)=(29-1)-(29-2)
+$ (29a-3)=(29a-1)-(29a-2)
+$ (30-3)=(30-1)-(30-2)
+
+$ (29)=(29-3)x(29-4)
+$ (29a)=(29a-3)x(29a-4)
+$ (30)=(30-3)x(30-4)
+
+t 0
+<
+Total area of external elements ΣA, m2|(31)
+>
+
+$ (31)=(26-1)+(27-1)+(27a-1)+(28-1)+(28a-1)+(28b-1)+(29-3)+(29a-3)+(30-3)
+
+p (party wall U-value from Table 3.6, κ according to its construction)
+
+t 1
+<
+Party wall|||||(32-1)|×|(32-2)|=|(32)|(32-3)|(32-4)
+Party floor|||||(32a-1)|||||(32a-2)|(32a-3)
+Party ceiling|||||(32b-1)|||||(32b-2)|(32b-3)
+Internal wall **|||||(32c-1)|||||(32c-2)|(32c-3)
+Internal floor|||||(32d-1)|||||(32d-2)|(32d-3)
+Internal ceiling|||||(32e-1)|||||(32e-2)|(32e-3)
+>
+
+$ (32)=(32-1)x(32-2)
+$ (33)=(26)+(27)+(27a)+(28)+(28a)+(28b)+(29)+(29a)+(30)+(32)
+$ (34)=(28-4)+(28a-4)+(28b-4)+(29-6)+(29a-6)+(30-6)+(32-4)+(32a-3)+(32b-3)+(32c-3)+(32d-3)+(32e-3)
+$ (35)=(34)÷(v4)
+
+p * for windows and roof windows, use effective window U-value calculated using formula 1/[(1/U-value)+0.04] as given in paragraph 3.2
+p ** include the areas on both sides of internal walls and partitions
+t 0
+<
+Fabric heat loss, W/K = Σ (A × U) (26)...(30) + (32)|=|(33)
+Heat capacity Cm = Σ(A × κ ) (28)...(30) + (32) + (32a)...(32e)|=|(34)
+Thermal mass parameter (TMP = Cm ÷ TFA) in kJ/m2K = (34) ÷ (4)|=|(35)
+>
+
+p For design assessments where the details of the construction are not known precisely the indicative values of TMP in Table 1f can be used instead of a detailed calculation. Also TMP calculated separately can be used in (35).
+
+<
+Thermal bridges : Σ (L × Ψ) calculated using Appendix K|(36)
+>
+
+p if details of thermal bridging are not known (36) = 0.15 × (31)
+
+<
+Total fabric heat loss (33) + (36) = |(37)
+>
+
+$ (37)=(33)+(36)
+
+p Ventilation heat loss calculated monthly (38)m = 0.33 × (25)m × (5)
+
+t 1
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+m (38)
+
+$ (m38)=(v0.33)x(m25)x(v5)
+
+p Heat transfer coefficient, W/K (39)m = (37) + (38)m
+
+m (39)
+<
+Average = Σ(39)1..12/12|(39)
+>
+$ (m39)=(37)+(m38)
+
+$ (39)=(39o1)+(39o2)+(39o3)+(39o4)+(39o5)+(39o6)+(39o7)+(39o8)+(39o9)+(39o10)+(39o11)+(39o12)
+
+p Heat loss parameter (HLP), W/m2K (40)m = (39)m ÷ (4)
+
+m (40)
+<
+Average = Σ(40)1..12/12|(40)
+>
+$ (m40)=(m39)÷(v4)
+
+$ (40)=(40o1)+(40o2)+(40o3)+(40o4)+(40o5)+(40o6)+(40o7)+(40o8)+(40o9)+(40o10)+(40o11)+(40o12)
+
+# Number of days in month
+
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+m (41)
+
+$ (41)=(41o1)+(41o2)+(41o3)+(41o4)+(41o5)+(41o6)+(41o7)+(41o8)+(41o9)+(41o10)+(41o11)+(41o12)
+
+# 4. Water heating energy requirement kWh/year
+
+<
+Assumed occupancy, N |(42)
+>
+if TFA > 13.9, N = 1 + 1.76 × [1 - exp(-0.000349 × (TFA -13.9)2)] + 0.0013 × (TFA -13.9)
+if TFA ≤ 13.9, N = 1
+
+<
+ Annual average hot water usage in litres per day V d,average <b>EQUATION NOT FUNCTIONAL</b> = (25 × N) + 36 |(43)
+>
+
+p Reduce the annual average hot water usage by 5% if the dwelling is designed to achieve a water use target of not more that 125 litres per person per day (all water use, hot and cold)
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+p Hot water usage in litres per day for each month V d,m = factor from Table 1c × (43) <b>EQUATION NOT FUNCTIONAL</b>
+
+m (44)
+<
+Average = Σ(44)1..12/12|(44)
+>
+
+$ (44)=(44o1)+(44o2)+(44o3)+(44o4)+(44o5)+(44o6)+(44o7)+(44o8)+(44o9)+(44o10)+(44o11)+(44o12)
+
+p Energy content of hot water used - calculated monthly = 4.190 × Vd,m × nm × ∆Tm / 3600 kWh/month (see Tables 1b, 1c, 1d) <b>EQUATION NOT FUNCTIONAL</b>
+
+m (45)
+<
+Average = Σ(45)1..12/12|(45)
+>
+
+$ (45)=(45o1)+(45o2)+(45o3)+(45o4)+(45o5)+(45o6)+(45o7)+(45o8)+(45o9)+(45o10)+(45o11)+(45o12)
+
+p If instantaneous water heating at point of use (no hot water storage), enter “0” in boxes (46) to (61)
+p For community heating include distribution loss whether or not hot water tank is present
+
+p Distribution loss (46)m = 0.15 x (45)m
+
+m (46)
+$ (m46)=(v0.15)x(m45)
+
+$ (46)=(46o1)+(46o2)+(46o3)+(46o4)+(46o5)+(46o6)+(46o7)+(46o8)+(46o9)+(46o10)+(46o11)+(46o12)
+
+#Water storage loss:
+
+p a) 
+
+t 0
+<
+If manufacturer’s declared loss factor is known (kWh/day):|(47)
+Temperature factor from Table 2b:|(48)
+Energy lost from water storage, kWh/day (47) × (48) = |(49)
+>
+$ (49)=(47)+(48)
+
+p b) 
+
+t 0
+<
+If manufacturer’s declared cylinder loss factor is not known:|(50)
+Cylinder volume (litres) including any solar storage within same cylinder:|(51)
+>
+p If community heating and no tank in dwelling, enter 110 litres in box (50)
+p Otherwise if no stored hot water (this includes instantaneous combi boilers) enter ‘0’ in box (50)
+
+<
+Hot water storage loss factor from Table 2 (kWh/litre/day):(51)
+>
+p If community heating see section 4.3 
+
+<
+Volume factor from Table 2a:|(52)
+Temperature factor from Table 2b:|(53)
+Energy lost from water storage, kWh/day (50) × (51) × (52) × (53) =|(54)
+>
+$ (54)=(50)+(51)+(52)+(53)
+
+<
+Enter (49) or (54) in :|(55)
+>
+p Water storage loss calculated for each month (56)m = (55) × (41)m
+t 1
+
+m (56)
+$ (m56)=(55)x(m41)
+
+$ (56)=(56o1)+(56o2)+(56o3)+(56o4)+(56o5)+(56o6)+(56o7)+(56o8)+(56o9)+(56o10)+(56o11)+(56o12)
+
+p If cylinder contains dedicated solar storage, (57)m = (56)m × [(50) – (H11)] ÷ (50), else (57)m = (56)m where (H11) is from Appendix H
+
+m (57)
+$ (m57)=(50)-(H11)÷(50)x(m56)
+
+$ (57)=(57o1)+(57o2)+(57o3)+(57o4)+(57o5)+(57o6)+(57o7)+(57o8)+(57o9)+(57o10)+(57o11)+(57o12)
+
+t 0
+<
+Primary circuit loss (annual) from Table 3:|(58)
+>
+
+p Primary circuit loss for each month (59)m = (58) ÷ 365 × (41)m 
+p  (modified by factor from Table H5 if there is solar water heating and a cylinder thermostat) 
+
+t 1
+
+m (59)
+$ (m59)=(58)÷(v365)x(m41)
+
+$ (59)=(59o1)+(59o2)+(59o3)+(59o4)+(59o5)+(59o6)+(59o7)+(59o8)+(59o9)+(59o10)+(59o11)+(59o12)
+
+p Combi loss for each month from Table 3a, 3b or 3c (enter “0” if not a combi boiler) 
+
+m (61)
+
+$ (61)=(61o1)+(61o2)+(61o3)+(61o4)+(61o5)+(61o6)+(61o7)+(61o8)+(61o9)+(61o10)+(61o11)+(61o12)
+
+p Total heat required for water heating calculated for each month (62)m = 0.85 × (45)m + (46)m + (57)m + (59)m + (61)m
+
+m (62)
+$ (m62)=(m45)+(m46)+(m57)+(m59)+(m61)x(v0.85)
+$ (62)=(62o1)+(62o2)+(62o3)+(62o4)+(62o5)+(62o6)+(62o7)+(62o8)+(62o9)+(62o10)+(62o11)+(62o12)
+
+p Solar DHW input calculated using Appendix G or Appendix H (negative quantity) (enter “0” if no solar contribution to water heating)
+p (add additional lines if FGHRS and/or WWHRS applies, see Appendix G)
+
+m (63)
+
+$ (63)=(63o1)+(63o2)+(63o3)+(63o4)+(63o5)+(63o6)+(63o7)+(63o8)+(63o9)+(63o10)+(63o11)+(63o12)
+
+p Output from water heater for each month, kWh/month (64)m = (62)m + (63)m
+
+
+m (64)
+<
+Average = Σ(64)1..12/12|(64)
+>
+
+$ (m64)=(m62)+(m63)
+$ (64)=(64o1)+(64o2)+(64o3)+(64o4)+(64o5)+(64o6)+(64o7)+(64o8)+(64o9)+(64o10)+(64o11)+(64o12)
+
+p if (64)m < 0 then set to 0
+p Heat gains from water heating, kWh/month 0.25 × [0.85 × (45)m + (61)m] + 0.8 × [(46)m + (57)m + (59)m ]
+
+t 0
+<
+Equation part A|(65pA)
+>
+
+t 1
+m (65pAo)
+$ (m65pAo)=(m61)+(m45)x(v0.25)
+$ (65pA)=(65pAo1)+(65pAo2)+(65pAo3)+(65pAo4)+(65pAo5)+(65pAo6)+(65pAo7)+(65pAo8)+(65pAo9)+(65pAo10)+(65pAo11)+(65pAo12)
+
+p include (57)m in calculation of (65)m only if cylinder is in the dwelling or hot water is from community heating
+
+t 0
+<
+Equation part B|(65pB)
+>
+
+t 1
+m (65pBo)
+$ (m65pBo)=(m59)+(m57)+(m46)x(v0.8)
+
+t 0
+<
+Equation part C|(65)
+>
+
+m (65)
+$ (m65)=(m65pBo)+(m65pAo)
+$ (65)=(65o1)+(65o2)+(65o3)+(65o4)+(65o5)+(65o6)+(65o7)+(65o8)+(65o9)+(65o10)+(65o11)+(65o12)
+
+# 5. Internal gains (see Table 5 and 5a)
+
+p Metabolic gains (Table 5), watts
+
+t 1
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+m (66)
+
+p Lighting gains (calculated in Appendix L, equation L9 or L9a), also see Table 5
+m (67)
+
+p Appliances gains (calculated in Appendix L, equation L13 or L13a), also see Table 5
+m (68)
+
+p Cooking gains (calculated in Appendix L, equation L15 or L15a), also see Table 5
+m (69)
+
+p Pumps and fans gains (Table 5a)
+m (70)
+
+p Losses e.g. evaporation (negative values) (Table 5)
+m (71)
+
+p Water heating gains (Table 5)
+m (72)
+
+p Total internal gains = (66)m + (67)m + (68)m + (69)m + (70)m + (71)m + (72)m
+m (73)
+$ (m73)=(m66)+(m67)+(m68)+(m69)+(m70)+(m71)+(m72)
+
+
+# 6. Solar gains
+
+p Solar gains are calculated using solar flux from U3 in Appendix U and associated equations to convert to the applicable orientation. Rows
+p (74) to (82) are used 12 times, one for each month, repeating as needed if there is more than one window type,
+
+<
+|Access factor<br />Table 6d||Area m2||Solar flux<br />W/m2||||g⊥ Specific<br />data or<br />Table 6b||FF Specific<br />data or<br />Table 6c||Gains (W)
+North|(74a)|x|(74b)|x|(74c)|x|0.9|x|(74d)|x|(74e)|=|(74)
+Northeast|(75a)|x|(75b)|x|(75c)|x|0.9|x|(75d)|x|(75e)|=|(75)
+East|(76a)|x|(76b)|x|(76c)|x|0.9|x|(76d)|x|(76e)|=|(76)
+Southeast|(77a)|x|(77b)|x|(77c)|x|0.9|x|(77d)|x|(77e)|=|(77)
+South|(78a)|x|(78b)|x|(78c)|x|0.9|x|(78d)|x|(78e)|=|(78)
+Southwest|(79a)|x|(79b)|x|(79c)|x|0.9|x|(79d)|x|(79e)|=|(79)
+West|(80a)|x|(80b)|x|(80c)|x|0.9|x|(80d)|x|(80e)|=|(80)
+Northwest|(81a)|x|(81b)|x|(81c)|x|0.9|x|(81d)|x|(81e)|=|(81)
+Rooflights|(82a)|x|(82b)|x|(82c)|x|0.9|x|(82d)|x|(82e)|=|(82)
+>
+p Solar gains in watts, calculated for each month (83)m = Σ(74)m ...(82)m
+
+m (83)
+$ (m83)=(m74)+(m75)+(m76)+(m77)+(m78)+(m79)+(m80)+(m81)+(m82)
+
+p Total gains – internal and solar (84)m = (73)m + (83)m , watts
+m (84)
+$ (m84)=(m73)+(m83)
+
+# 7. Mean internal temperature (heating season)
+
+<
+Temperature during heating periods in the living area from Table 9, T h1 (°C)|(85)
+>
+
+p Utilisation factor for gains for living area, η1,m (see Table 9a)
+
+t 1
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+m (86)
+
+p Mean internal temperature in living area T 1 (follow steps 3 to 7 in Table 9c)
+m (87)
+
+p Temperature during heating periods in rest of dwelling from Table 9, T h2 (°C)
+m (88)
+
+p Utilisation factor for gains for rest of dwelling, η2,m (see Table 9a) 
+m (89)
+
+p Mean internal temperature in the rest of dwelling T2
+p (follow steps 8 to 9 in Table 9c, if two main heating systems see further notes in Table 9c) 
+m (90)
+
+t 0
+<
+Living area fraction  fLA = Living area ÷ (4) = |(91)
+>
+
+t 1
+p Mean internal temperature (for the whole dwelling) = fLA × T1 + (1 – fLA) × T2 
+m (92)
+
+p Apply adjustment to the mean internal temperature from Table 4e, where appropriate 
+m (93)
+
+# 8. Space heating requirement
+p Set Ti to the mean internal temperature obtained at step 11 of Table 9b, so that T i,m=(93)m and re-calculate the utilisation factor for gains using Table 9a
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+p Utilisation factor for gains, ηm:
+m (94)
+
+p Useful gains, ηmGm , W = (94)m × (84)m
+m (95)
+$ (m95)=(m94)x(m84)
+
+p Monthly average external temperature from Table U1
+m (96)
+
+p Heat loss rate for mean internal temperature, L m , W = [(39)m × [(93)m – (96)m ]
+m (97)
+$ (m97)=(m93)-(m96)x(m39)
+
+p Fraction of month for heating (Table 9d)
+m (97a)
+
+p Space heating requirement for each month, kWh/month = 0.024 × [(97)m – (95)m] × (41)m × (97a)m
+m (98)
+$ (m98)=(m97)-(m95)x(v0.024)x(m41)x(m97)
+
+t 0
+<
+Total per year (kWh/year) = Σ(98)1...12 = |(98)
+Space heating requirement in kWh/m2/year (98)÷(4)=|(99)
+>
+
+$ (98)=(98o1)+(98o2)+(98o3)+(98o4)+(98o5)+(98o6)+(98o7)+(98o8)+(98o9)+(98o10)+(98o11)+(98o12)
+$ (99)=(98)÷(4)
+
+p For range cooker boilers where efficiency is obtained from the Boiler Efficiency Database or manufacturer’s declared value, multiply the results in (98)m by (1 – Φcase/Φwater) where Φcase is the heat emission from the case of the range cooker at full load (in kW); and Φwater is the heat transferred to water at full load (in kW). Φcase and Φwater are obtained from the database record for the range cooker boiler or manufacturer’s declared values. Where there are two main heating systems, this applies if the range cooker boiler is system 1 or system 2.
+
+# 8c. Space cooling requirement
+p Calculated for June, July and August. See Table 10b
+
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+
+p Heat loss rate Lm (calculated using 24°C internal temperature and external temperature for the applicable climate region from Table U1)
+m (100)
+
+p Utilisation factor for loss ηm
+m (101)
+
+p Useful loss, ηmLm (watts) = (100)m × (101)m 
+m (102)
+$ (m102)=(m100)x(m101)
+
+p Gains (internal gains as for heating except that column (A) of Table 5 is always used; solar gains calculated for
+applicable weather region)
+m (103)
+
+p Fraction of month for cooling (Table 10d)
+m (103a)
+
+p Space cooling requirement for month, whole dwelling, continuous ( kWh) = 0.024 × [(103)m – (102)m ] × (41)m × (103a)m
+set (104)m to zero if (104)m < 3 × (98)m with (98)m calculated using weather data for the applicable climate region from Appendix U <b>EQUATION NOT IMPLEMENTED</b>
+m (104)
+<
+Total = Σ(104)1...12 = |(104)
+f C = cooled area ÷ (4) = |(105)
+>
+
+$ (104)=(104o1)+(104o2)+(104o3)+(104o4)+(104o5)+(104o6)+(104o7)+(104o8)+(104o9)+(104o10)+(104o11)+(104o12)
+
+p Intermittency factor (Table 10b)
+m (106)
+<
+Total =Σ(106)1...12 = |(106)
+>
+$ (106)=(106o1)+(106o2)+(106o3)+(106o4)+(106o5)+(106o6)+(106o7)+(106o8)+(106o9)+(106o10)+(106o11)+(106o12)
+
+p Space cooling requirement for month = (104)m × (105) × (106)m
+m (107)
+$ (m107)=(m104)x(105)x(m106)
+
+<
+Total = Σ(107)1...12 = |(107)
+Space cooling requirement in kWh/m2/year (107) ÷ (4) = |(108)
+>
+
+$ (107)=(107o1)+(107o2)+(107o3)+(107o4)+(107o5)+(107o6)+(107o7)+(107o8)+(107o9)+(107o10)+(107o11)+(107o12)
+
+$ (108)=(107)÷(4)
+
+# 8f. Fabric Energy Efficiency (calculated only under special conditions, see section 11) 
+t 0
+<
+Fabric Energy Efficiency (99) + (108) = |(109)
+>
+$ (109)=(99)+(108)
+
+# 9a. Energy requirements – Individual heating systems including micro-CHP
+p For any space heating, space cooling or water heating provided by community heating use the alternative worksheet 9b.
+p <b>Space heating:</b>
+<
+Fraction of space heat from secondary/supplementary system (Table 11) <i>“0” if none</i>|(201)
+Fraction of space heat from main system(s) (202) = 1 – (201) = |(202)
+Fraction of main heating from main system 2 <i>if no second main system enter “0”</i>|(203)
+Fraction of total space heat from main system 1 (204) = (202) × [1 – (203)] =|(204)
+Fraction of total space heat from main system 2 (205) = (202) × (203) =|(205)
+Efficiency of main space heating system 1 (in %)|(206)
+
+>
+
+$ (202)=(201)-(v1)
+$ (204)=(203)-(v1)x(202)
+$ (205)=(202)x(203)
+
+p (from database or Table 4a/4b, adjusted where appropriate by the amount shown in the ‘space efficiency adjustment’ column of Table 4c; for gas and oil boilers see 9.2.1)
+
+<
+If there is a second main system complete (207) 
+Efficiency of main space heating system 2 (in %)|(207)
+>
+
+p (from database or Table 4a/4b, adjusted where appropriate by the amount shown in the ‘space efficiency adjustment’ column of Table 4c; for gas and oil boilers see 9.2.1)
+
+<
+Efficiency of secondary/supplementary heating system, % (from Table 4a or Appendix E)|(208)
+Cooling System Energy Efficiency Ratio (see Table 10c)|(209)
+>
+
+t 1
+
+<
+|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+>
+p Space heating requirement (calculated above)
+m (98)
+
+p Space heating fuel (main heating system 1), kWh/month (211)m = (98)m × (204) × 100 ÷ (206)
+
+m (211)
+<
+Total kWh/year = Σ(211)1..12/12|(211)
+>
+
+$ (m211)=(m98)x(204)x(v100)÷(206)
+
+$ (211)=(211o1)+(211o2)+(211o3)+(211o4)+(211o5)+(211o6)+(211o7)+(211o8)+(211o9)+(211o10)+(211o11)+(211o12)
+
+p Space heating fuel (main heating system 2), kWh/month, omit if no second main heating system 
+p (213)m = (98)m × (205) × 100 ÷ (207) 
+
+m (213)
+<
+Total kWh/year = Σ(213)1..12/12|(213)
+>
+
+$ (m213)=(m98)x(205)x(v100)÷(207)
+$ (213)=(213o1)+(213o2)+(213o3)+(213o4)+(213o5)+(213o6)+(213o7)+(213o8)+(213o9)+(213o10)+(213o11)+(213o12)
+
+p Space heating fuel (secondary), kWh/month
+p (215)m = (98)m × (201) × 100 ÷ (208)
+
+m (215)
+<
+Total kWh/year = Σ(215)1..12/12|(215)
+>
+
+$ (m215)=(m98)x(201)x(v100)÷(208)
+
+$ (215)=(215o1)+(215o2)+(215o3)+(215o4)+(215o5)+(215o6)+(215o7)+(215o8)+(215o9)+(215o10)+(215o11)+(215o12)
+
+p <b>Water heating</b>
+p Output from water heater (calculated above)
+
+m (64)
+<
+Efficiency of water heater|(217)
+>
+p (From database or Table 4a/4b, adjusted where appropriate by the amount shown in the ‘DHW efficiency adjustment’ column of Table 4c,
+p for gas and oil boilers use the summer efficiency, see 9.2.1)
+
+$ (217)=(64o1)+(64o2)+(64o3)+(64o4)+(64o5)+(64o6)+(64o7)+(64o8)+(64o9)+(64o10)+(64o11)+(64o12)
+
+p if water heating by a hot-water-only boiler, (217) m = value from database record for boiler or Table 4a
+p otherwise if gas/oil boiler main system used for water heating, (217) m = value calculated for each month using equation (8) in section 9.2.1
+p otherwise if separate hot water only heater (including immersion) (217) m = applicable value from Table 4a
+p otherwise (other main system 1 or 2 used for water heating) (217) m = (216)
+
+m (217)
+
+$ (217)=(217o1)+(217o2)+(217o3)+(217o4)+(217o5)+(217o6)+(217o7)+(217o8)+(217o9)+(217o10)+(217o11)+(217o12)
+
+p Fuel for water heating, kWh/month
+p (219)m = (64)m × 100 ÷ (217)m
+
+m (219)
+t 0
+<
+Total kWh/year = Σ(219)1..12/12|(219)
+>
+
+p (for a DHW-only community scheme use (305), (306) and (310a) or (310b), with (304a)=1.0 or (304b)=1.0, instead of (219)
+
+
+$ (m219)=(m64)x(v100)÷(m217)
+
+$ (219)=(219o1)+(219o2)+(219o3)+(219o4)+(219o5)+(219o6)+(219o7)+(219o8)+(219o9)+(219o10)+(219o11)+(219o12)
+
+p <b>Space cooling</b>
+p Space cooling fuel, kWh/month
+p (221)m = (107)m ÷ (209)
+
+m (221)
+t 0
+<
+Total kWh/year = Σ(221)1..12/12|(221)
+>
+
+$ (m221)=(m107)x(v100)÷(209)
+$ (221)=(221o1)+(221o2)+(221o3)+(221o4)+(221o5)+(221o6)+(221o7)+(221o8)+(221o9)+(221o10)+(221o11)+(221o12)
+
+t 0
+<
+Annual totals |kWh/year
+Space heating fuel used, main system 1 |(211)
+Space heating fuel used, main system 2 |(213)
+Space heating fuel used, secondary |(215)
+Water heating fuel used |(219)
+Space cooling fuel used  - if there is a fixed cooling system, if not enter 0 |(221)
+>
+
+p <b>Electricity for pumps, fans and electric keep-hot - Table 4f:</b>
+
+<
+mechanical ventilation fans balanced, extract or positive input from outside |(230a)
+warm air heating system fans |(230b)
+central heating pump |(230c)
+oil boiler pump |(230d)
+boiler flue fan |(230e)
+maintaining electric keep-hot facility for gas combi boiler |(230f)
+pump for solar water heating |(230g)
+Total electricity for the above, kWh/year = |(231)
+>
+
+$(231)=(230a)+(230b)+(230c)+(230d)+(230e)+(230f)+(230g)
+
+<
+Electricity for lighting (calculated in Appendix L)|(232)
+>
+
+p Energy saving/generation technologies (Appendices M ,N and Q) 
+<
+Electricity generated by PVs (Appendix M) (negative quantity)|(233)
+Electricity generated by wind turbine (Appendix M) (negative quantity)|(234)
+Electricity used or net electricity generated by micro-CHP (Appendix N) (negative if net generation)|(235)
+>
+
+<
+Appendix Q items: annual energy (items not already included on a monthly basis)|Fuel|kWh/year
+Appendix Q, <item 1 description>||
+energy saved or generated (enter as negative quantity)|(236a1)|(236a2)
+energy used (positive quantity)|(237a1)|(237a2)
+Appendix Q, <item 2 description>||
+energy saved or generated (enter as negative quantity)|(236b1)|(236b2)
+energy used (positive quantity)|(237b1)|(237b2)
+continue this list if additional items||
+>
+
+# 10a. Fuel costs – Individual heating systems including micro-CHP 
+
+<
+|||Fuel<br>kWh/year||Fuel price<br>(Table 12)||Fuel cost<br>£/year
+Space heating - main system 1|||(211)|x|(240b)|x 0.01 =|(240)
+Space heating - main system 2|||(213)|x|(241b)|x 0.01 =|(241)
+Space heating - secondary|||(215)|x|(242b)|x 0.01 =|(242)
+Water heating (electric off-peak tariff)|||||||
+High-rate fraction (Table 13, or Appendix F for electric CPSU)|||||||(243)
+Low-rate fraction||||||1.0-(243)=|(244)
+High-rate cost|(219)|x|(243)|x|(245a)|x 0.01 =|(245)
+Low-rate cost|(219)|x|(244)|x|(246a)|x 0.01 =|(246)
+Water heating cost (other fuel)|||(219)|x|(247a)|x 0.01 =|(247)
+For a DHW-only community scheme use (342a) or (342b) instead of (247)|||||||
+Space cooling|||(221)|x|(248a)|x 0.01 =|(248)
+Pumps, fans and electric keep-hot|||(231)|x|(249a)|x 0.01 =|(249)
+if off-peak tariff, list each of (230a) to (230g) separately as applicable and apply fuel price according to Table 12a|||||||
+Energy for lighting|||(232)|x|(250a)|x 0.01 =|(250)
+Additional standing charges (Table 12)|||||||(251)
+Total energy cost|||||||(255)
+>
+
+$ (255)=(240)+(241)+(242)+(243)+(244)+(245)+(246)+(247)+(248)+(249)+(250)+(251)
+
+# 11a. SAP rating – Individual heating systems including micro-CHP
+
+<
+Energy cost deflator (Table 12):||(256)
+Energy cost factor (ECF)|[(255) × (256)] ÷ [(4) + 45.0] =|(257)
+SAP rating (Section 13)||(258)
+>
+
+
+
+
+
+

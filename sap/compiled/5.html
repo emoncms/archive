@@ -1,0 +1,289 @@
+<script language="javascript" type="text/javascript" src="<?php echo $path;?>Lib/flot/jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo $path;?>Lib/flot/jquery.flot.stack.min.js"></script>
+
+<h3> 5. Internal gains (see Table 5 and 5a)</h3>
+
+
+<div class="alert alert-info">
+<p>This page presents a summary output of the different internal gains as calculated on other pages.</p>
+<p>Metabolic gains are calculated by multiplying building occupancy by 60.</p>
+<p>Lighting, appliance and cooking gains are calculated in <a href="AppendixL" >Appendix L: Lighting and Appliances</a></p>
+</div>
+
+<div id="graph" style="width:100%; height:400px;"></div>
+
+<script id="source" language="javascript" type="text/javascript">
+
+jQuery(function ($) {
+
+
+  var metabolicgains = [];
+  for (var i=1; i<13; i++) metabolicgains[i-1] = [i,data['66-'+i]];
+
+  var lightinggains = [];
+  for (var i=1; i<13; i++) lightinggains[i-1] = [i,data['67-'+i]];
+
+  var appliancegains = [];
+  for (var i=1; i<13; i++) appliancegains[i-1] = [i,data['68-'+i]];
+
+  var cookinggains = [];
+  for (var i=1; i<13; i++) cookinggains[i-1] = [i,data['69-'+i]];
+
+  var pumpsfans = [];
+  for (var i=1; i<13; i++) pumpsfans[i-1] = [i,data['70-'+i]];
+
+  var waterheating = [];
+  for (var i=1; i<13; i++) waterheating[i-1] = [i,data['72-'+i]];
+
+  $.plot($("#graph"), [
+
+  {
+    data: metabolicgains, 
+    label: "Metabolic gains (Watts)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 0,
+    yaxis: 1
+  },
+  {
+    data: cookinggains, 
+    label: "Cooking gains (Watts)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 3,
+    yaxis: 1
+  },
+  {
+    data: lightinggains, 
+    label: "Lighting gains (Watts)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 1,
+    yaxis: 1
+  },
+  {
+    data: appliancegains, 
+    label: "Appliance gains (Watts)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 2,
+    yaxis: 1
+  },
+  {
+    data: pumpsfans, 
+    label: "Pumps and fans gains (Watts)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 4,
+    yaxis: 1
+  },
+  {
+    data: waterheating, 
+    label: "Water heating gains (Watts)",
+    stack: true,
+    bars: { 
+      show: true, 
+      barWidth: 0.8,
+      fill: true,
+      align: "center"
+    },
+    color: 5,
+    yaxis: 1
+  }], 
+  {
+    grid: { show: true, hoverable: true, clickable: true },
+
+    yaxis: {min: 0},
+    selection: { mode: "x" }
+  });
+
+});
+
+</script>
+
+<p> Metabolic gains (Table 5), watts</p>
+<table class='table table-bordered'>
+  <tr>
+    <td></td>
+    <td>Jan</td>
+    <td>Feb</td>
+    <td>Mar</td>
+    <td>Apr</td>
+    <td>May</td>
+    <td>Jun</td>
+    <td>Jul</td>
+    <td>Aug</td>
+    <td>Sep</td>
+    <td>Oct</td>
+    <td>Nov</td>
+    <td>Dec</td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(66)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='66-1' type='text' placeholder='66-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-2' type='text' placeholder='66-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-3' type='text' placeholder='66-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-4' type='text' placeholder='66-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-5' type='text' placeholder='66-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-6' type='text' placeholder='66-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-7' type='text' placeholder='66-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-8' type='text' placeholder='66-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-9' type='text' placeholder='66-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-10' type='text' placeholder='66-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-11' type='text' placeholder='66-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='66-12' type='text' placeholder='66-12' value='0' /></td>
+  </tr>
+</table>
+<p> Lighting gains (calculated in Appendix L, equation L9 or L9a), also see Table 5</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(67)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='67-1' type='text' placeholder='67-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-2' type='text' placeholder='67-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-3' type='text' placeholder='67-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-4' type='text' placeholder='67-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-5' type='text' placeholder='67-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-6' type='text' placeholder='67-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-7' type='text' placeholder='67-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-8' type='text' placeholder='67-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-9' type='text' placeholder='67-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-10' type='text' placeholder='67-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-11' type='text' placeholder='67-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='67-12' type='text' placeholder='67-12' value='0' /></td>
+  </tr>
+</table>
+<p> Appliances gains (calculated in Appendix L, equation L13 or L13a), also see Table 5</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(68)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='68-1' type='text' placeholder='68-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-2' type='text' placeholder='68-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-3' type='text' placeholder='68-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-4' type='text' placeholder='68-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-5' type='text' placeholder='68-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-6' type='text' placeholder='68-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-7' type='text' placeholder='68-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-8' type='text' placeholder='68-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-9' type='text' placeholder='68-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-10' type='text' placeholder='68-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-11' type='text' placeholder='68-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='68-12' type='text' placeholder='68-12' value='0' /></td>
+  </tr>
+</table>
+<p> Cooking gains (calculated in Appendix L, equation L15 or L15a), also see Table 5</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(69)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='69-1' type='text' placeholder='69-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-2' type='text' placeholder='69-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-3' type='text' placeholder='69-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-4' type='text' placeholder='69-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-5' type='text' placeholder='69-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-6' type='text' placeholder='69-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-7' type='text' placeholder='69-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-8' type='text' placeholder='69-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-9' type='text' placeholder='69-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-10' type='text' placeholder='69-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-11' type='text' placeholder='69-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='69-12' type='text' placeholder='69-12' value='0' /></td>
+  </tr>
+</table>
+<p> Pumps and fans gains (Table 5a)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(70)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='70-1' type='text' placeholder='70-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-2' type='text' placeholder='70-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-3' type='text' placeholder='70-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-4' type='text' placeholder='70-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-5' type='text' placeholder='70-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-6' type='text' placeholder='70-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-7' type='text' placeholder='70-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-8' type='text' placeholder='70-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-9' type='text' placeholder='70-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-10' type='text' placeholder='70-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-11' type='text' placeholder='70-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='70-12' type='text' placeholder='70-12' value='0' /></td>
+  </tr>
+</table>
+<p> Losses e.g. evaporation (negative values) (Table 5)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(71)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='71-1' type='text' placeholder='71-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-2' type='text' placeholder='71-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-3' type='text' placeholder='71-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-4' type='text' placeholder='71-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-5' type='text' placeholder='71-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-6' type='text' placeholder='71-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-7' type='text' placeholder='71-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-8' type='text' placeholder='71-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-9' type='text' placeholder='71-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-10' type='text' placeholder='71-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-11' type='text' placeholder='71-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='71-12' type='text' placeholder='71-12' value='0' /></td>
+  </tr>
+</table>
+<p> Water heating gains (Table 5)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(72)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='72-1' type='text' placeholder='72-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-2' type='text' placeholder='72-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-3' type='text' placeholder='72-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-4' type='text' placeholder='72-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-5' type='text' placeholder='72-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-6' type='text' placeholder='72-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-7' type='text' placeholder='72-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-8' type='text' placeholder='72-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-9' type='text' placeholder='72-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-10' type='text' placeholder='72-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-11' type='text' placeholder='72-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='72-12' type='text' placeholder='72-12' value='0' /></td>
+  </tr>
+</table>
+<p> Total internal gains = (66)m + (67)m + (68)m + (69)m + (70)m + (71)m + (72)m</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(73)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='73-1' type='text' placeholder='73-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-2' type='text' placeholder='73-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-3' type='text' placeholder='73-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-4' type='text' placeholder='73-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-5' type='text' placeholder='73-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-6' type='text' placeholder='73-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-7' type='text' placeholder='73-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-8' type='text' placeholder='73-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-9' type='text' placeholder='73-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-10' type='text' placeholder='73-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-11' type='text' placeholder='73-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='73-12' type='text' placeholder='73-12' value='0' /></td>
+  </tr>
+</table>

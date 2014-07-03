@@ -1,0 +1,284 @@
+<h3> 3. Heat losses and heat loss parameter</h3>
+<p> Items in the table below are to be expanded as necessary to allow for all different types of element e.g. 4 wall types.</p>
+<p> The κ-value is the heat capacity per unit area, see Table 1e</p>
+<table id="heatlosstable" class='table table-bordered'>
+  <tr>
+    <td>Element</td>
+    <td>Gross<br>area, m2</td>
+    <td></td>
+    <td>Openings<br>m2</td>
+    <td></td>
+    <td>Net area<br>A, m2</td>
+    <td></td>
+    <td>U-value<br>W/m2K</td>
+    <td>=</td>
+    <td>A×U<br>W/K</td>
+    <td>κ-value<br>kJ/m2·K</td>
+    <td>A×κ<br>kJ/K</td>
+  </tr>
+
+  <tr>
+    <td style='padding:8px 6px 6px 6px; width:100px;'><input style='width:100px' id='heatlossitem-itemname' type='text' placeholder='' value='' /></td>
+
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' id='heatlossitem-grossarea' type='text' placeholder='' value='0' /></td>
+    <td>-</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' id='heatlossitem-openings' type='text' placeholder='' value='0' /></td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' id='heatlossitem-netarea' type='text' placeholder='' value='0' /></td>
+    <td>×</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' id='heatlossitem-uvalue' type='text' placeholder='' value='0' /></td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'></td>
+
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' id='heatlossitem-kvalue' type='text' placeholder='' value='0' /></td>
+
+    <td style='padding:8px 6px 6px 6px; width:85px;'></td>
+
+    <td><input id="heatlossitem_add" type='button' value='Add' style="margin-top:3px" /></td>
+
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td>Total area of external elements ΣA, m2</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='31' type='text' placeholder='31' value='0' /><div class='tag' >(31)</div></td>
+  </tr>
+</table>
+<p> (party wall U-value from Table 3.6, κ according to its construction)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>Party wall</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32-1' type='text' placeholder='32-1' value='0' /><div class='tag' >(32-1)</div></td>
+    <td>×</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32-2' type='text' placeholder='32-2' value='0' /><div class='tag' >(32-2)</div></td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32' type='text' placeholder='32' value='0' /><div class='tag' >(32)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32-3' type='text' placeholder='32-3' value='0' /><div class='tag' >(32-3)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32-4' type='text' placeholder='32-4' value='0' /><div class='tag' >(32-4)</div></td>
+  </tr>
+  <tr>
+    <td>Party floor</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32a-1' type='text' placeholder='32a-1' value='0' /><div class='tag' >(32a-1)</div></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32a-2' type='text' placeholder='32a-2' value='0' /><div class='tag' >(32a-2)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32a-3' type='text' placeholder='32a-3' value='0' /><div class='tag' >(32a-3)</div></td>
+  </tr>
+  <tr>
+    <td>Party ceiling</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32b-1' type='text' placeholder='32b-1' value='0' /><div class='tag' >(32b-1)</div></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32b-2' type='text' placeholder='32b-2' value='0' /><div class='tag' >(32b-2)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32b-3' type='text' placeholder='32b-3' value='0' /><div class='tag' >(32b-3)</div></td>
+  </tr>
+  <tr>
+    <td>Internal wall **</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32c-1' type='text' placeholder='32c-1' value='0' /><div class='tag' >(32c-1)</div></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32c-2' type='text' placeholder='32c-2' value='0' /><div class='tag' >(32c-2)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32c-3' type='text' placeholder='32c-3' value='0' /><div class='tag' >(32c-3)</div></td>
+  </tr>
+  <tr>
+    <td>Internal floor</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32d-1' type='text' placeholder='32d-1' value='0' /><div class='tag' >(32d-1)</div></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32d-2' type='text' placeholder='32d-2' value='0' /><div class='tag' >(32d-2)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32d-3' type='text' placeholder='32d-3' value='0' /><div class='tag' >(32d-3)</div></td>
+  </tr>
+  <tr>
+    <td>Internal ceiling</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32e-1' type='text' placeholder='32e-1' value='0' /><div class='tag' >(32e-1)</div></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32e-2' type='text' placeholder='32e-2' value='0' /><div class='tag' >(32e-2)</div></td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='32e-3' type='text' placeholder='32e-3' value='0' /><div class='tag' >(32e-3)</div></td>
+  </tr>
+</table>
+<p> * for windows and roof windows, use effective window U-value calculated using formula 1/[(1/U-value)+0.04] as given in paragraph 3.2</p>
+<p> ** include the areas on both sides of internal walls and partitions</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>Fabric heat loss, W/K = Σ (A × U) (26)...(30) + (32)</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='33' type='text' placeholder='33' value='0' /><div class='tag' >(33)</div></td>
+  </tr>
+  <tr>
+    <td>Heat capacity Cm = Σ(A × κ ) (28)...(30) + (32) + (32a)...(32e)</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='34' type='text' placeholder='34' value='0' /><div class='tag' >(34)</div></td>
+  </tr>
+  <tr>
+    <td>Thermal mass parameter (TMP = Cm ÷ TFA) in kJ/m2K = (34) ÷ (4)</td>
+    <td>=</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='35' type='text' placeholder='35' value='0' /><div class='tag' >(35)</div></td>
+  </tr>
+</table>
+<p> For design assessments where the details of the construction are not known precisely the indicative values of TMP in Table 1f can be used instead of a detailed calculation. Also TMP calculated separately can be used in (35).</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>Thermal bridges : Σ (L × Ψ) calculated using Appendix K</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='36' type='text' placeholder='36' value='0' /><div class='tag' >(36)</div></td>
+  </tr>
+</table>
+<p> if details of thermal bridging are not known (36) = 0.15 × (31)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td>Total fabric heat loss (33) + (36) = </td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='37' type='text' placeholder='37' value='0' /><div class='tag' >(37)</div></td>
+  </tr>
+</table>
+<p> Ventilation heat loss calculated monthly (38)m = 0.33 × (25)m × (5)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td></td>
+    <td>Jan</td>
+    <td>Feb</td>
+    <td>Mar</td>
+    <td>Apr</td>
+    <td>May</td>
+    <td>Jun</td>
+    <td>Jul</td>
+    <td>Aug</td>
+    <td>Sep</td>
+    <td>Oct</td>
+    <td>Nov</td>
+    <td>Dec</td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(38)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='38-1' type='text' placeholder='38-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-2' type='text' placeholder='38-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-3' type='text' placeholder='38-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-4' type='text' placeholder='38-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-5' type='text' placeholder='38-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-6' type='text' placeholder='38-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-7' type='text' placeholder='38-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-8' type='text' placeholder='38-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-9' type='text' placeholder='38-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-10' type='text' placeholder='38-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-11' type='text' placeholder='38-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='38-12' type='text' placeholder='38-12' value='0' /></td>
+  </tr>
+</table>
+<p> Heat transfer coefficient, W/K (39)m = (37) + (38)m</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(39)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='39-1' type='text' placeholder='39-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-2' type='text' placeholder='39-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-3' type='text' placeholder='39-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-4' type='text' placeholder='39-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-5' type='text' placeholder='39-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-6' type='text' placeholder='39-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-7' type='text' placeholder='39-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-8' type='text' placeholder='39-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-9' type='text' placeholder='39-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-10' type='text' placeholder='39-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-11' type='text' placeholder='39-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='39-12' type='text' placeholder='39-12' value='0' /></td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td>Average = Σ(39)1..12/12</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='39' type='text' placeholder='39' value='0' /><div class='tag' >(39)</div></td>
+  </tr>
+</table>
+<p> Heat loss parameter (HLP), W/m2K (40)m = (39)m ÷ (4)</p>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(40)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='40-1' type='text' placeholder='40-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-2' type='text' placeholder='40-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-3' type='text' placeholder='40-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-4' type='text' placeholder='40-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-5' type='text' placeholder='40-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-6' type='text' placeholder='40-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-7' type='text' placeholder='40-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-8' type='text' placeholder='40-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-9' type='text' placeholder='40-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-10' type='text' placeholder='40-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-11' type='text' placeholder='40-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='40-12' type='text' placeholder='40-12' value='0' /></td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td>Average = Σ(40)1..12/12</td>
+    <td style='padding:8px 6px 6px 6px; width:85px;'><input style='width:36px' class='40' type='text' placeholder='40' value='0' /><div class='tag' >(40)</div></td>
+  </tr>
+</table>
+<h3> Number of days in month</h3>
+<table class='table table-bordered'>
+  <tr>
+    <td></td>
+    <td>Jan</td>
+    <td>Feb</td>
+    <td>Mar</td>
+    <td>Apr</td>
+    <td>May</td>
+    <td>Jun</td>
+    <td>Jul</td>
+    <td>Aug</td>
+    <td>Sep</td>
+    <td>Oct</td>
+    <td>Nov</td>
+    <td>Dec</td>
+  </tr>
+</table>
+<table class='table table-bordered'>
+  <tr>
+    <td style='padding-top:8px'>(41)m</td>
+    <td style='padding:3px'><input style='width:32px;' class='41-1' type='text' placeholder='41-1' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-2' type='text' placeholder='41-2' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-3' type='text' placeholder='41-3' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-4' type='text' placeholder='41-4' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-5' type='text' placeholder='41-5' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-6' type='text' placeholder='41-6' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-7' type='text' placeholder='41-7' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-8' type='text' placeholder='41-8' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-9' type='text' placeholder='41-9' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-10' type='text' placeholder='41-10' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-11' type='text' placeholder='41-11' value='0' /></td>
+    <td style='padding:3px'><input style='width:32px;' class='41-12' type='text' placeholder='41-12' value='0' /></td>
+  </tr>
+</table>

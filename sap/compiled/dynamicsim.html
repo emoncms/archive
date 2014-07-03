@@ -1,0 +1,213 @@
+<script type="text/javascript" src="<?php echo $path; ?>/Modules/sap/compiled/dynamicsim/house.js"></script>
+<h3>Simple building simulation</h3>
+<p>The following is an experiment in dynamic simulation. The model implementation is really simple. It takes the heat capacity (34), heat transfer coefficient (39)m, average monthly solar gain (83)m and outside temperature (96)m from the SAP spreadsheet and calculates the internal temperature throughout an average day in June.</p><br>
+  <div class="row-fluid">
+<div class="span4">
+  <p><b>SAP Settings</b></p>
+  <p>Heat capacity (34) (J/K)<br>
+  <input id="heatcapacity" type="text"></p>
+
+  <p>Heat transfer coefficient (39)m (W/K)<br>
+  <input id="heattrasfer" type="text"></p>
+
+  <p>Average monthly solar gain (83)m (Watts)<br>
+  <input id="solargain" type="text"></p>
+
+  <p>Outside temperature (96)m (Celcius)<br>
+  <input id="outsidetemp" type="text"></p>
+
+  <p><b>Heating</b></p>
+
+  <p>Heating power (Watts)<br>
+  <input id="heating" type="text"></p>
+
+  <label class="checkbox">
+    <input id="constantheating" type="checkbox" value="">
+    Turn constant heating on
+  </label>
+
+  <label class="checkbox">
+    <input id="timedayheating" type="checkbox" value="">
+    Turn 6am-9am and 4pm-9pm heating on
+  </label>
+  (Constant heating overrides time of day heating)
+  <br>  <br>
+
+  <p><b>Simulation</b></p>
+
+  <p>Timestep (seconds)<br>
+  <input id="timestep" type="text"></p>
+
+  <label class="checkbox">
+    <input id="fade" type="checkbox" value="">
+    Fade temperature plot each day
+  </label>
+
+<br>
+<button id="simbtn" class="btn btn-primary" type="button">Simulate!</button>
+<br><br>
+</div>
+
+<div class="span5">
+  <canvas id="wall" width="650px" height="550px"></canvas>
+</div>
+</div>
+<h4>Model details</h4>
+
+<pre>
+loop()
+{
+  t+=dt;
+
+  var heat_loss =  heat_transfer_coefficient * (inside_temperature - outside_temperature);
+  var total_gains = solar + heating;
+  var heat = total_gains - heat_loss;
+  inside_temperature = ((heat / heat_capacity) * dt) + inside_temperature;
+}
+</pre>
+
+<script>
+
+jQuery(function ($) {
+
+  var thmass = data['34'] * 1000.0;
+  $("#heatcapacity").val(thmass);
+
+  var heat_transfer_coefficient = data['39-6']; // W/k (39)m
+  $("#heattrasfer").val(heat_transfer_coefficient);
+
+  var outside = data['96-6']; // Celcius
+  $("#outsidetemp").val(outside);
+
+  var solar_gain_amplitude = data['83-6']*3.15; // Watts
+  $("#solargain").val(data['83-6']);
+
+  var inside = outside; // Celcius
+  
+  var heating_enabled = false;
+  var heating = 0; // Watts
+  var heatinglevel = 3000; // Watts
+  $("#heating").val(heatinglevel);
+
+  var constantheating = false;
+  var timedayheating = false;
+
+  var canvas = document.getElementById("wall");
+  var ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0,0,800,800);
+
+  draw_house(ctx,100,480);
+
+  setInterval(update,10);
+  var dt = 500;
+  $("#timestep").val(dt);
+  t = 0;
+
+  var fade = false;
+
+  ctx.font = '22pt Arial';
+  ctx.fillText(outside.toFixed(1)+"C", 570,350);
+
+  // 24
+
+var day = 0, lastday = 0;
+
+var solar_sum = 0, i=0;
+
+var graph_x, graph_y, last_graph_x, last_graph_y;
+
+function update() {
+
+    // Time
+    t+=dt;
+
+    // Day counter
+    lastday = day;
+    day = Math.round((t/3600.0)/24.0-0.5);
+
+    // Time of day
+    var timeday = (t/3600) - 24*day;
+
+    if (lastday!=day) {
+      if (fade==true){
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle="#fff"; 
+        ctx.fillRect(75,201,372,255);
+        ctx.globalAlpha = 1.0;
+      }
+      console.log(solar_sum/i);
+      solar_sum = 0;
+      i = 0;
+    }
+
+    var solar = 00 + Math.sin(((t/3600.0)/24.0)*(2*Math.PI)+(Math.PI*1.5))*solar_gain_amplitude;
+    if (solar<0) solar = 0;
+
+    solar_sum += solar; i++;
+
+    heating = 0;
+
+    if (timedayheating) {
+      if (timeday>6 && timeday<9) heating = heatinglevel;
+      if (timeday>16 && timeday<21) heating = heatinglevel;
+    }
+
+    if (constantheating) heating = heatinglevel;
+
+    //if (inside<19) heating = 2000; else heating = 0;
+
+    var heatloss =  heat_transfer_coefficient * (inside-outside);
+    var heatgains = solar + heating;
+    var H = heatgains - heatloss;
+    inside = ((H / thmass) * dt) + inside;
+ 
+    // Visual output and graphing
+
+    ctx.fillStyle = "#f69844";
+
+    ctx.clearRect(240,330,80,80);
+    ctx.font = '22pt Arial';
+    ctx.fillText(inside.toFixed(1)+"C", 240,350);
+
+    ctx.font = '14pt Arial';
+    ctx.fillText("Day: "+day, 240,380);
+
+    ctx.fillStyle = "#000";
+    var ty = 450;
+
+    //last_graph_x = graph_x;
+    //last_graph_y = graph_y;
+
+    graph_x = 75+timeday*15.5;
+    graph_y = 480-(inside*10);
+
+    ctx.fillRect(graph_x,graph_y,1,1);
+
+    ctx.font = '14pt Arial';
+    ctx.fillText((timeday).toFixed(1)+"h", 240,410);
+}
+
+$("#simbtn").click(function(){
+
+  thmass = $("#heatcapacity").val();
+
+  heat_transfer_coefficient = $("#heattrasfer").val();
+
+  outside = $("#outsidetemp").val();
+
+  solar_gain_amplitude = $("#solargain").val() * 3.15;
+
+  dt = 1.0 * $("#timestep").val();
+
+  fade = $("#fade")[0].checked;
+
+  heatinglevel = 1.0 * $("#heating").val();
+  constantheating = $("#constantheating")[0].checked;
+  timedayheating = $("#timedayheating")[0].checked;
+
+});
+
+});
+
+</script>
