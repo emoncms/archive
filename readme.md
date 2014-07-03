@@ -7,4 +7,8 @@ Emoncms Module ConvertToTimestore - will no longer work with latest version of e
 
 Emocnms Module Sync - replaced with script based account sync found in usefulscripts
 
-Feedconvert - depreciated
+Feedconvert - depreciated, old feed engines
+
+Command - depreciated, being replaced with packetgen
+
+Rota - unmaintained stub project 
