@@ -11,4 +11,8 @@ Feedconvert - depreciated, old feed engines
 
 Command - depreciated, being replaced with packetgen
 
-Rota - unmaintained stub project 
+Rota - unmaintained stub project
+
+MyElectric - in process of being replaced with development/app module
+Node - depreciated
+feedengines - depreciated feed engines see: http://openenergymonitor.org/emon/node/10380
