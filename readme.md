@@ -18,3 +18,9 @@ MyElectric - in process of being replaced with development/app module
 Node - depreciated
 
 feedengines - depreciated feed engines see: http://openenergymonitor.org/emon/node/10380
+
+node-markdown - Simple markdown page creator module, no longer maintained but could be useful in future.
+
+listjs - latest version kept in main emoncms repository
+
+tablejs - latest version kept in main emoncms repository
